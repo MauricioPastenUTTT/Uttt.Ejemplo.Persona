@@ -47,7 +47,7 @@ namespace UTTT.Ejemplo.Persona
                 {
                     this.baseEntity = dcGlobal.GetTable<Linq.Data.Entity.Persona>().First(c => c.id == this.idPersona);
                     this.txtPersona.Text = this.baseEntity.strNombre + " " + this.baseEntity.strAPaterno + "  " + this.baseEntity.strAMaterno;
-                    if (this.baseEntity.Direccion.Count() == 0)
+                    if (this.baseEntity.Direccions.Count() == 0)
                     {
                         this.lblAccion.Text = "Agregar";
                     }
