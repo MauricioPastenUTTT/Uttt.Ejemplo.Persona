@@ -111,6 +111,15 @@ namespace UTTT.Ejemplo.Persona
                     persona.strAPaterno = this.txtAPaterno.Text.Trim();
                     persona.strCurp = this.txtCurp.Text.Trim();
                     persona.idCatSexo = int.Parse(this.ddlSexo.Text);
+
+                    String mensaje = String.Empty;
+                    if(!this.validacion(persona, ref mensaje))
+                    {
+                        this.lblMensaje.Text = mensaje;
+                        this.lblMensaje.Visible = true;
+                        return;
+                    }
+
                     dcGuardar.GetTable<UTTT.Ejemplo.Linq.Data.Entity.Persona>().InsertOnSubmit(persona);
                     dcGuardar.SubmitChanges();
                     this.showMessage("El registro se agrego correctamente.");
@@ -184,6 +193,74 @@ namespace UTTT.Ejemplo.Persona
                 }
             }
             _control.Items.FindByText(_value).Selected = true;
+        }
+
+        public bool validacion(Linq.Data.Entity.Persona _persona, ref string _mensaje)
+        {
+            if(_persona.idCatSexo == -1)
+            {
+                _mensaje = "Selecciona Masculino o Femenino";
+                return false;
+            }
+
+            int i = 0;
+            if(int.TryParse(_persona.strClaveUnica, out i) == false)
+            {
+                _mensaje = "La clave unica no es un numero";
+                return false;
+            }
+            
+            if(int.Parse(_persona.strClaveUnica) < 100 && int.Parse(_persona.strClaveUnica) > 999)
+            {
+                _mensaje = "La clave unica esta fuera de rango";
+                return false;
+            }
+
+            if (_persona.strNombre.Equals(String.Empty))
+            {
+                _mensaje = "El nombre esta vacio";
+                return false;
+            }
+
+            if(_persona.strNombre.Length > 50)
+            {
+                _mensaje = "El nombre sale del rango establecido de caracteres";
+            }
+
+            if (_persona.strAPaterno.Equals(String.Empty))
+            {
+                _mensaje = "El apelido paterno esta vacio";
+                return false;
+            }
+
+            if (_persona.strAPaterno.Length > 50)
+            {
+                _mensaje = "El apellido paterno sale del rango establecido de caracteres";
+            }
+
+            if (_persona.strAMaterno.Equals(String.Empty))
+            {
+                _mensaje = "El apelido materno esta vacio";
+                return false;
+            }
+
+            if (_persona.strAMaterno.Length > 50)
+            {
+                _mensaje = "El apellido materno sale del rango establecido de caracteres";
+            }
+
+            if (_persona.strCurp.Equals(String.Empty))
+            {
+                _mensaje = "El CURP esta vacio";
+                return false;
+            }
+
+            if (_persona.strCurp.Length > 18)
+            {
+                _mensaje = "El CURP sale del rango establecido de caracteres";
+            }
+
+            return true;
         }
 
         #endregion

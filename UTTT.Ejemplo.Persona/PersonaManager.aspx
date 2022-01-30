@@ -138,6 +138,8 @@
         </div>
     <div> 
     
+        <asp:Label ID="lblMensaje" runat="server" ForeColor="Red" Visible="False"></asp:Label>
+    
     </div>
     <div>
      
@@ -150,6 +152,8 @@
             onclick="btnCancelar_Click" ViewStateMode="Disabled" />
     
     </div>
+        <p>
+            &nbsp;</p>
     </form>
 </body>
 </html>
