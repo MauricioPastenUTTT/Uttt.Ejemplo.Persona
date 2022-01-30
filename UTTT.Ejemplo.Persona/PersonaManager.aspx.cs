@@ -105,7 +105,6 @@ namespace UTTT.Ejemplo.Persona
         {
             try
             {
-                throw new Exception("Excepcion prueba de correo");
                 if(!Page.IsValid)
                 {
                     return;
