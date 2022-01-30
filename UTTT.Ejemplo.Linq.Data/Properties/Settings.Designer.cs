@@ -44,5 +44,27 @@ namespace UTTT.Ejemplo.Linq.Data.Properties {
                 return ((string)(this["PersonaConnectionString1"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=4LFRED;Initial Catalog=Persona;Persist Security Info=True;User ID=sa;" +
+            "Password=MiCuent@SQL239")]
+        public string PersonaConnectionString2 {
+            get {
+                return ((string)(this["PersonaConnectionString2"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=UTTTEjemploPersona.mssql.somee.com;Initial Catalog=UTTTEjemploPersona" +
+            ";Persist Security Info=True;User ID=MauricioUTTT_SQLLogin_1;Password=s9zqm5w5l1")]
+        public string UTTTEjemploPersonaConnectionString {
+            get {
+                return ((string)(this["UTTTEjemploPersonaConnectionString"]));
+            }
+        }
     }
 }

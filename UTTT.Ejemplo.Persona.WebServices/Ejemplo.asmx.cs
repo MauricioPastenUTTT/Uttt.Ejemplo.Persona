@@ -76,7 +76,7 @@ namespace UTTT.Ejemplo.Persona.WebServices
                 DataContext dcTemp = new DcGeneralDataContext();
                 UTTT.Ejemplo.Linq.Data.Entity.Persona persona =
                     dcTemp.GetTable<UTTT.Ejemplo.Linq.Data.Entity.Persona>().First(c => c.id == _persona.Id);
-                dcTemp.GetTable<Direccion>().DeleteAllOnSubmit(persona.Direccion);
+                dcTemp.GetTable<Direccion>().DeleteAllOnSubmit(persona.Direccions);
                 dcTemp.GetTable<UTTT.Ejemplo.Linq.Data.Entity.Persona>().DeleteOnSubmit(persona);
                 dcTemp.SubmitChanges();
                 dcTemp.Dispose();
