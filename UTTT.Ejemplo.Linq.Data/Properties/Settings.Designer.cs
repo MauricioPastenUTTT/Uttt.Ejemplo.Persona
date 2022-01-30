@@ -66,5 +66,16 @@ namespace UTTT.Ejemplo.Linq.Data.Properties {
                 return ((string)(this["UTTTEjemploPersonaConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=UTTTEjemploPersona.mssql.somee.com;Initial Catalog=UTTTEjemploPersona" +
+            ";Persist Security Info=True;User ID=MauricioUTTT_SQLLogin_1")]
+        public string UTTTEjemploPersonaConnectionString1 {
+            get {
+                return ((string)(this["UTTTEjemploPersonaConnectionString1"]));
+            }
+        }
     }
 }

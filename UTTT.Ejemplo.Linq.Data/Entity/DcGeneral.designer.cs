@@ -319,6 +319,8 @@ namespace UTTT.Ejemplo.Linq.Data.Entity
 		
 		private System.Nullable<int> _idCatEstadoCivil;
 		
+		private string _strCurp;
+		
 		private EntitySet<Direccion> _Direccions;
 		
 		private EntityRef<CatSexo> _CatSexo;
@@ -345,6 +347,8 @@ namespace UTTT.Ejemplo.Linq.Data.Entity
     partial void OnintNumHermanoChanged();
     partial void OnidCatEstadoCivilChanging(System.Nullable<int> value);
     partial void OnidCatEstadoCivilChanged();
+    partial void OnstrCurpChanging(string value);
+    partial void OnstrCurpChanged();
     #endregion
 		
 		public Persona()
@@ -534,6 +538,26 @@ namespace UTTT.Ejemplo.Linq.Data.Entity
 					this._idCatEstadoCivil = value;
 					this.SendPropertyChanged("idCatEstadoCivil");
 					this.OnidCatEstadoCivilChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_strCurp", DbType="NVarChar(18)")]
+		public string strCurp
+		{
+			get
+			{
+				return this._strCurp;
+			}
+			set
+			{
+				if ((this._strCurp != value))
+				{
+					this.OnstrCurpChanging(value);
+					this.SendPropertyChanging();
+					this._strCurp = value;
+					this.SendPropertyChanged("strCurp");
+					this.OnstrCurpChanged();
 				}
 			}
 		}
