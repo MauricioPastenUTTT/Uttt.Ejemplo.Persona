@@ -13,6 +13,14 @@ using System.Collections;
 using UTTT.Ejemplo.Persona.Control;
 using UTTT.Ejemplo.Persona.Control.Ctrl;
 
+using System.Net.Mail;
+using System.Configuration;
+using System.Web.Configuration;
+using System.Net.Configuration;
+using System.Net;
+using System.Security.Cryptography.X509Certificates;
+using System.Net.Security;
+
 #endregion
 
 namespace UTTT.Ejemplo.Persona
@@ -87,7 +95,7 @@ namespace UTTT.Ejemplo.Persona
             }
             catch (Exception _e)
             {
-                this.showMessage("Ha ocurrido un problema al cargar la página");
+                envioDeCorreo("Excepcion cargar pagina", "Ah ocurrido un error inesperadoal cargar la pagina del aplicativo UTTT.Ejemplo.Persona:" + e);
                 this.Response.Redirect("~/PersonaPrincipal.aspx", false);
             }
 
@@ -97,6 +105,7 @@ namespace UTTT.Ejemplo.Persona
         {
             try
             {
+                throw new Exception("Excepcion prueba de correo");
                 if(!Page.IsValid)
                 {
                     return;
@@ -142,6 +151,7 @@ namespace UTTT.Ejemplo.Persona
             }
             catch (Exception _e)
             {
+                envioDeCorreo("Excepcion Guardar", "Ah ocurrido un error inesperado al guardar persona en el aplicativo UTTT.Ejemplo.Persona:" + e);
                 this.showMessageException(_e.Message);
             }
         }
@@ -263,6 +273,29 @@ namespace UTTT.Ejemplo.Persona
             return true;
         }
 
+        public void envioDeCorreo(String subject, String body)
+        { 
+            MailMessage msg = new MailMessage();
+            try
+            {
+                msg.Subject = subject;
+                msg.Body = body;
+                msg.From = new MailAddress("mauricio.pasten.mpm@gmail.com");
+                msg.To.Add("19300782@uttt.edu.mx");
+                msg.IsBodyHtml = true;
+                SmtpClient client = new SmtpClient();
+                client.Host = "smtp.gmail.com";
+                client.Port = 587;
+                client.Credentials = new NetworkCredential("mauricio.pasten.mpm@gmail.com", "mipasguord239gogle");
+                client.EnableSsl = true;
+                client.UseDefaultCredentials = false;
+                client.Send(msg);
+            }
+            catch (Exception ex)
+            {
+                this.showMessage(ex.Message);
+            }
+        }
         #endregion
     }
 }
