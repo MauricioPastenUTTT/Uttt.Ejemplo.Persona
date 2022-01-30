@@ -78,6 +78,7 @@
                 Height="25px" Width="253px" 
                 onselectedindexchanged="ddlSexo_SelectedIndexChanged">
             </asp:DropDownList>
+            <asp:RequiredFieldValidator ID="rfvSexo" runat="server" ControlToValidate="ddlSexo" ErrorMessage="Se debe seleccionar el sexo" InitialValue="0"></asp:RequiredFieldValidator>
     </div>
 
         </div>
@@ -91,6 +92,9 @@
                 onkeypress="return validaNumero(event);" pattern=".{1,3}" required
                 title="1 a 3 es la longitud que se permite ingresar"></asp:TextBox>
         
+            <asp:RequiredFieldValidator ID="rfvClaveUnica" runat="server" ControlToValidate="txtClaveUnica" ErrorMessage="El campo es obligatorio"></asp:RequiredFieldValidator>
+            <asp:RangeValidator ID="rvClaveUnica" runat="server" ControlToValidate="txtClaveUnica" ErrorMessage="*La clave unica debe estar entre 100 y 999" MaximumValue="999" MinimumValue="100" Type="Integer"></asp:RangeValidator>
+        
         </div>
         <div>
         
@@ -99,11 +103,14 @@
             Nombre:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;<asp:TextBox 
                 ID="txtNombre" runat="server" Width="249px" ViewStateMode="Disabled" onkeypress="return  validaLetras(event);"></asp:TextBox>
         
+            <asp:RequiredFieldValidator ID="rfvNombre" runat="server" ControlToValidate="txtNombre" ErrorMessage="El campo es obligatorio"></asp:RequiredFieldValidator>
+        
         </div>
         <div> 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
             A Paterno:&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:TextBox 
                 ID="txtAPaterno" runat="server" Width="249px" ViewStateMode="Disabled" onkeypress="return  validaLetras(event);"></asp:TextBox>
+            <asp:RequiredFieldValidator ID="rfvAPaterno" runat="server" ControlToValidate="txtAPaterno" ErrorMessage="El campo es obligatorio"></asp:RequiredFieldValidator>
         </div>
         <div>
         
@@ -112,6 +119,8 @@
             A Materno:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
             <asp:TextBox ID="txtAMaterno" runat="server" Width="248px" 
                 ViewStateMode="Disabled" onkeypress="return  validaLetras(event);"></asp:TextBox>
+        
+            <asp:RequiredFieldValidator ID="rfvAMaterno" runat="server" ControlToValidate="txtAMaterno" ErrorMessage="El campo es obligatorio"></asp:RequiredFieldValidator>
         
         </div>
         <div>
@@ -123,6 +132,9 @@
                 ViewStateMode="Disabled" onkeypress="return  validaCaracteresEspeciales(event);" 
                 pattern=".{1,18}"  title="El curp solo admite hasta 18 caracteres" required></asp:TextBox>
         
+            <asp:RequiredFieldValidator ID="rfvCurp" runat="server" ControlToValidate="txtCurp" ErrorMessage="El campo es obligatorio"></asp:RequiredFieldValidator>
+            <asp:RegularExpressionValidator ID="regexCurp" runat="server" ControlToValidate="txtCurp" ErrorMessage="El formato del CURP es incorrecto" ValidationExpression="^([A-Z][AEIOUX][A-Z]{2}\d{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[12]\d|3[01])[HM](?:AS|B[CS]|C[CLMSH]|D[FG]|G[TR]|HG|JC|M[CNS]|N[ETL]|OC|PL|Q[TR]|S[PLR]|T[CSL]|VZ|YN|ZS)[B-DF-HJ-NP-TV-Z]{3}[A-Z\d])(\d)$"></asp:RegularExpressionValidator>
+        
         </div>
     <div> 
     
@@ -132,7 +144,7 @@
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
      
         <asp:Button ID="btnAceptar" runat="server" Text="Aceptar" 
-            onclick="btnAceptar_Click" ViewStateMode="Disabled" />
+            onclick="btnAceptar_Click" ViewStateMode="Disabled" style="height: 26px" />
         &nbsp;&nbsp;&nbsp;
         <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" 
             onclick="btnCancelar_Click" ViewStateMode="Disabled" />

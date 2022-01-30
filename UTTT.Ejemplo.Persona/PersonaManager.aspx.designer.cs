@@ -42,6 +42,15 @@ namespace UTTT.Ejemplo.Persona
         protected global::System.Web.UI.WebControls.DropDownList ddlSexo;
 
         /// <summary>
+        /// rfvSexo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvSexo;
+
+        /// <summary>
         /// txtClaveUnica control.
         /// </summary>
         /// <remarks>
@@ -49,6 +58,24 @@ namespace UTTT.Ejemplo.Persona
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtClaveUnica;
+
+        /// <summary>
+        /// rfvClaveUnica control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvClaveUnica;
+
+        /// <summary>
+        /// rvClaveUnica control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RangeValidator rvClaveUnica;
 
         /// <summary>
         /// txtNombre control.
@@ -60,6 +87,15 @@ namespace UTTT.Ejemplo.Persona
         protected global::System.Web.UI.WebControls.TextBox txtNombre;
 
         /// <summary>
+        /// rfvNombre control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvNombre;
+
+        /// <summary>
         /// txtAPaterno control.
         /// </summary>
         /// <remarks>
@@ -67,6 +103,15 @@ namespace UTTT.Ejemplo.Persona
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtAPaterno;
+
+        /// <summary>
+        /// rfvAPaterno control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvAPaterno;
 
         /// <summary>
         /// txtAMaterno control.
@@ -78,6 +123,15 @@ namespace UTTT.Ejemplo.Persona
         protected global::System.Web.UI.WebControls.TextBox txtAMaterno;
 
         /// <summary>
+        /// rfvAMaterno control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvAMaterno;
+
+        /// <summary>
         /// txtCurp control.
         /// </summary>
         /// <remarks>
@@ -85,6 +139,24 @@ namespace UTTT.Ejemplo.Persona
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtCurp;
+
+        /// <summary>
+        /// rfvCurp control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvCurp;
+
+        /// <summary>
+        /// regexCurp control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator regexCurp;
 
         /// <summary>
         /// btnAceptar control.

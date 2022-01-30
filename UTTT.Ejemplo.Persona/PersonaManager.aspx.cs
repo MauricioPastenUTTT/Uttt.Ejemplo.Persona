@@ -97,6 +97,10 @@ namespace UTTT.Ejemplo.Persona
         {
             try
             {
+                if(!Page.IsValid)
+                {
+                    return;
+                }
                 DataContext dcGuardar = new DcGeneralDataContext();
                 UTTT.Ejemplo.Linq.Data.Entity.Persona persona = new Linq.Data.Entity.Persona();
                 if (this.idPersona == 0)
