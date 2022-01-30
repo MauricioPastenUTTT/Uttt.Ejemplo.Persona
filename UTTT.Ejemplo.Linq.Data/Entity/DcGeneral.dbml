@@ -21,6 +21,7 @@
       <Column Name="dteFechaNacimiento" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="intNumHermano" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="idCatEstadoCivil" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="strCurp" Type="System.String" DbType="NVarChar(18)" CanBeNull="true" />
       <Association Name="Persona_Direccion" Member="Direccions" ThisKey="id" OtherKey="idPersona" Type="Direccion" />
       <Association Name="CatSexo_Persona" Member="CatSexo" ThisKey="idCatSexo" OtherKey="id" Type="CatSexo" IsForeignKey="true" />
     </Type>
