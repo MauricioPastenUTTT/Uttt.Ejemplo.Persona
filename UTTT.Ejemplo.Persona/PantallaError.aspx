@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="PantallaError.aspx.cs" Inherits="UTTT.Ejemplo.Persona.WebForm1" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="PantallaError.aspx.cs" Inherits="UTTT.Ejemplo.Persona.PantallaError1" %>
 
 <!DOCTYPE html>
 

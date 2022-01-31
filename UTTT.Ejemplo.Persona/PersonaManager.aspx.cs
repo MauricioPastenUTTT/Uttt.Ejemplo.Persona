@@ -151,7 +151,6 @@ namespace UTTT.Ejemplo.Persona
             catch (Exception _e)
             {
                 envioDeCorreo("Excepcion Guardar", "Ah ocurrido un error inesperado al guardar persona en el aplicativo UTTT.Ejemplo.Persona:" + e);
-                this.showMessageException(_e.Message);
             }
         }
 
