@@ -78,7 +78,7 @@
                 Height="25px" Width="253px" 
                 onselectedindexchanged="ddlSexo_SelectedIndexChanged">
             </asp:DropDownList>
-            <asp:RequiredFieldValidator ID="rfvSexo" runat="server" ControlToValidate="ddlSexo" ErrorMessage="Se debe seleccionar el sexo" InitialValue="0"></asp:RequiredFieldValidator>
+            <asp:RangeValidator ID="RangeValidator1" runat="server" ControlToValidate="ddlSexo" ErrorMessage="Se debe seleccionar el sexo" MaximumValue="2" MinimumValue="1" Type="Integer"></asp:RangeValidator>
     </div>
 
         </div>

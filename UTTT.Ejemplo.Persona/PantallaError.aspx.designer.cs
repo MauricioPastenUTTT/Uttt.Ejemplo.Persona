@@ -11,7 +11,7 @@ namespace UTTT.Ejemplo.Persona
 {
 
 
-    public partial class WebForm1
+    public partial class PantallaError1
     {
 
         /// <summary>
