@@ -87,6 +87,7 @@
     <Content Include="Images\printrecord_16x16.png" />
     <Content Include="javaScripFile.js" />
     <Content Include="javaScripPage.aspx" />
+    <Content Include="PantallaError.aspx" />
     <Content Include="PersonaManager.aspx" />
     <Content Include="PersonaPrincipal.aspx" />
     <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
@@ -144,6 +145,13 @@
     </Compile>
     <Compile Include="paginaMaster.Master.designer.cs">
       <DependentUpon>paginaMaster.Master</DependentUpon>
+    </Compile>
+    <Compile Include="PantallaError.aspx.cs">
+      <DependentUpon>PantallaError.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PantallaError.aspx.designer.cs">
+      <DependentUpon>PantallaError.aspx</DependentUpon>
     </Compile>
     <Compile Include="PersonaManager.aspx.cs">
       <DependentUpon>PersonaManager.aspx</DependentUpon>
