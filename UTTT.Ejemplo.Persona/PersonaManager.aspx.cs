@@ -95,7 +95,19 @@ namespace UTTT.Ejemplo.Persona
             }
             catch (Exception _e)
             {
-                envioDeCorreo("Excepcion cargar pagina", "Ah ocurrido un error inesperadoal cargar la pagina del aplicativo UTTT.Ejemplo.Persona:" + e);
+                // Qué ha sucedido
+                var mensaje = "Error message: " + _e.Message;
+
+                // Información sobre la excepción interna
+                if (_e.InnerException != null)
+                {
+                    mensaje = mensaje + " Inner exception: " + _e.InnerException.Message;
+                }
+
+                // Dónde ha sucedido
+                mensaje = mensaje + " Stack trace: " + _e.StackTrace;
+
+                envioDeCorreo("Excepcion cargar pagina", "Ah ocurrido un error inesperado al cargar la pagina del aplicativo UTTT.Ejemplo.Persona:" + mensaje);
                 this.Response.Redirect("~/PersonaPrincipal.aspx", false);
             }
 
@@ -130,7 +142,6 @@ namespace UTTT.Ejemplo.Persona
 
                     dcGuardar.GetTable<UTTT.Ejemplo.Linq.Data.Entity.Persona>().InsertOnSubmit(persona);
                     dcGuardar.SubmitChanges();
-                    throw new Exception("Creando Excepcion deliverada para el correo");
                     this.showMessage("El registro se agrego correctamente.");
                     this.Response.Redirect("~/PersonaPrincipal.aspx", false);
                     
@@ -151,7 +162,18 @@ namespace UTTT.Ejemplo.Persona
             }
             catch (Exception _e)
             {
-                envioDeCorreo("Excepcion Guardar", "Ah ocurrido un error inesperado al guardar persona en el aplicativo UTTT.Ejemplo.Persona: " + e);
+                // Qué ha sucedido
+                var mensaje = "Error message: " + _e.Message;
+
+                // Información sobre la excepción interna
+                if (_e.InnerException != null)
+                {
+                    mensaje = mensaje + " Inner exception: " + _e.InnerException.Message;
+                }
+
+                // Dónde ha sucedido
+                mensaje = mensaje + " Stack trace: " + _e.StackTrace;
+                envioDeCorreo("Excepcion Guardar", "Ah ocurrido un error inesperado al guardar persona en el aplicativo UTTT.Ejemplo.Persona: " + mensaje);
             }
         }
 
@@ -181,9 +203,22 @@ namespace UTTT.Ejemplo.Persona
                 this.ddlSexo.DataSource = lista;
                 this.ddlSexo.DataBind();
             }
-            catch (Exception)
+            catch (Exception _e)
             {
+                // Qué ha sucedido
+                var mensaje = "Error message: " + _e.Message;
+
+                // Información sobre la excepción interna
+                if (_e.InnerException != null)
+                {
+                    mensaje = mensaje + " Inner exception: " + _e.InnerException.Message;
+                }
+
+                // Dónde ha sucedido
+                mensaje = mensaje + " Stack trace: " + _e.StackTrace;
                 this.showMessage("Ha ocurrido un error inesperado");
+                envioDeCorreo("Excepcion Guardar", "Ah ocurrido un error inesperado al guardar persona en el aplicativo UTTT.Ejemplo.Persona: " + mensaje);
+
             }
         }
 
@@ -282,7 +317,7 @@ namespace UTTT.Ejemplo.Persona
                 mailMessage.To.Add(new MailAddress("mauricio.pasten.martinez@gmail.com"));
                 mailMessage.Subject = subject;
                 mailMessage.IsBodyHtml = true;
-                mailMessage.Body = "Ejemplo de Error Mauricio Pastén Martínez: " + body;
+                mailMessage.Body = body;
                 smtpClient.Port = 587;
                 smtpClient.Host = "smtp.gmail.com";
                 smtpClient.EnableSsl = true;
