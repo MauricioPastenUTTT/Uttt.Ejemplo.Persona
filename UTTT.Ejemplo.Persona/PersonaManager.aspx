@@ -89,7 +89,7 @@
             Clave Unica:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; 
             <asp:TextBox ID="txtClaveUnica" runat="server" 
                 Width="249px" ViewStateMode="Disabled"
-                onkeypress="return validaNumero(event);" pattern=".{1,3}" required
+                onkeypress="return validacionNumeros(event);" pattern=".{1,3}"
                 title="1 a 3 es la longitud que se permite ingresar"></asp:TextBox>
         
             <asp:RequiredFieldValidator ID="rfvClaveUnica" runat="server" ControlToValidate="txtClaveUnica" ErrorMessage="El campo es obligatorio"></asp:RequiredFieldValidator>
@@ -130,7 +130,7 @@
             CURP:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; 
             <asp:TextBox ID="txtCurp" runat="server" Width="248px" 
                 ViewStateMode="Disabled" onkeypress="return  validaCaracteresEspeciales(event);" 
-                pattern=".{1,18}"  title="El curp solo admite hasta 18 caracteres" required></asp:TextBox>
+                pattern=".{1,18}"  title="El curp solo admite hasta 18 caracteres"></asp:TextBox>
         
             <asp:RequiredFieldValidator ID="rfvCurp" runat="server" ControlToValidate="txtCurp" ErrorMessage="El campo es obligatorio"></asp:RequiredFieldValidator>
             <asp:RegularExpressionValidator ID="regexCurp" runat="server" ControlToValidate="txtCurp" ErrorMessage="El formato del CURP es incorrecto" ValidationExpression="^([A-Z][AEIOUX][A-Z]{2}\d{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[12]\d|3[01])[HM](?:AS|B[CS]|C[CLMSH]|D[FG]|G[TR]|HG|JC|M[CNS]|N[ETL]|OC|PL|Q[TR]|S[PLR]|T[CSL]|VZ|YN|ZS)[B-DF-HJ-NP-TV-Z]{3}[A-Z\d])(\d)$"></asp:RegularExpressionValidator>
@@ -149,7 +149,7 @@
             onclick="btnAceptar_Click" ViewStateMode="Disabled" style="height: 26px" />
         &nbsp;&nbsp;&nbsp;
         <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" 
-            onclick="btnCancelar_Click" ViewStateMode="Disabled" />
+            onclick="btnCancelar_Click" ViewStateMode="Disabled" CausesValidation="False" />
     
     </div>
         <p>

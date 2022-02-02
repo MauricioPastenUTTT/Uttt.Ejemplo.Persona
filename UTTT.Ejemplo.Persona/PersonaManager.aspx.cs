@@ -130,6 +130,7 @@ namespace UTTT.Ejemplo.Persona
 
                     dcGuardar.GetTable<UTTT.Ejemplo.Linq.Data.Entity.Persona>().InsertOnSubmit(persona);
                     dcGuardar.SubmitChanges();
+                    throw new Exception("Creando Excepcion deliverada para el correo");
                     this.showMessage("El registro se agrego correctamente.");
                     this.Response.Redirect("~/PersonaPrincipal.aspx", false);
                     
@@ -150,14 +151,14 @@ namespace UTTT.Ejemplo.Persona
             }
             catch (Exception _e)
             {
-                envioDeCorreo("Excepcion Guardar", "Ah ocurrido un error inesperado al guardar persona en el aplicativo UTTT.Ejemplo.Persona:" + e);
+                envioDeCorreo("Excepcion Guardar", "Ah ocurrido un error inesperado al guardar persona en el aplicativo UTTT.Ejemplo.Persona: " + e);
             }
         }
 
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
             try
-            {              
+            {
                 this.Response.Redirect("~/PersonaPrincipal.aspx", false);
             }
             catch (Exception _e)
@@ -273,21 +274,22 @@ namespace UTTT.Ejemplo.Persona
 
         public void envioDeCorreo(String subject, String body)
         { 
-            MailMessage msg = new MailMessage();
             try
             {
-                msg.Subject = subject;
-                msg.Body = body;
-                msg.From = new MailAddress("mauricio.pasten.mpm@gmail.com");
-                msg.To.Add("19300782@uttt.edu.mx");
-                msg.IsBodyHtml = true;
-                SmtpClient client = new SmtpClient();
-                client.Host = "smtp.gmail.com";
-                client.Port = 587;
-                client.Credentials = new NetworkCredential("mauricio.pasten.mpm@gmail.com", "mipasguord239gogle");
-                client.EnableSsl = true;
-                client.UseDefaultCredentials = false;
-                client.Send(msg);
+                MailMessage mailMessage = new MailMessage();
+                SmtpClient smtpClient = new SmtpClient();
+                mailMessage.From = new MailAddress("19300782@uttt.edu.mx");
+                mailMessage.To.Add(new MailAddress("mauricio.pasten.martinez@gmail.com"));
+                mailMessage.Subject = subject;
+                mailMessage.IsBodyHtml = true;
+                mailMessage.Body = "Ejemplo de Error Mauricio Pastén Martínez: " + body;
+                smtpClient.Port = 587;
+                smtpClient.Host = "smtp.gmail.com";
+                smtpClient.EnableSsl = true;
+                smtpClient.UseDefaultCredentials = false;
+                smtpClient.Credentials = new NetworkCredential("19300782@uttt.edu.mx", "MPM1305M");
+                smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
+                smtpClient.Send(mailMessage);
             }
             catch (Exception ex)
             {
