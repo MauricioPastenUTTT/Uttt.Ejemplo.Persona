@@ -115,12 +115,18 @@ namespace UTTT.Ejemplo.Persona
 
         protected void btnAceptar_Click(object sender, EventArgs e)
         {
+            if(this.txtClaveUnica.Text.Trim() == String.Empty && this.txtNombre.Text.Trim() == String.Empty &&
+                this.txtAMaterno.Text.Trim() == String.Empty && this.txtAPaterno.Text.Trim() == String.Empty &&
+                this.txtCurp.Text.Trim() == String.Empty && int.Parse(this.ddlSexo.Text).Equals(-1))
+            {
+                this.Response.Redirect("~/PersonaPrincipal.aspx", true);
+            }
+            else
+            {
+                btnAceptar.ValidationGroup = "svGuardar";
+            }
             try
             {
-                if(!Page.IsValid)
-                {
-                    return;
-                }
                 DataContext dcGuardar = new DcGeneralDataContext();
                 UTTT.Ejemplo.Linq.Data.Entity.Persona persona = new Linq.Data.Entity.Persona();
                 if (this.idPersona == 0)
@@ -132,8 +138,9 @@ namespace UTTT.Ejemplo.Persona
                     persona.strCurp = this.txtCurp.Text.Trim();
                     persona.idCatSexo = int.Parse(this.ddlSexo.Text);
 
+
                     String mensaje = String.Empty;
-                    if(!this.validacion(persona, ref mensaje))
+                    if (!this.validacion(persona, ref mensaje))
                     {
                         this.lblMensaje.Text = mensaje;
                         this.lblMensaje.Visible = true;
@@ -269,6 +276,7 @@ namespace UTTT.Ejemplo.Persona
             if(_persona.strNombre.Length > 50)
             {
                 _mensaje = "El nombre sale del rango establecido de caracteres";
+                return false;
             }
 
             if (_persona.strAPaterno.Equals(String.Empty))
@@ -280,6 +288,7 @@ namespace UTTT.Ejemplo.Persona
             if (_persona.strAPaterno.Length > 50)
             {
                 _mensaje = "El apellido paterno sale del rango establecido de caracteres";
+                return false;
             }
 
             if (_persona.strAMaterno.Equals(String.Empty))
@@ -291,6 +300,7 @@ namespace UTTT.Ejemplo.Persona
             if (_persona.strAMaterno.Length > 50)
             {
                 _mensaje = "El apellido materno sale del rango establecido de caracteres";
+                return false;
             }
 
             if (_persona.strCurp.Equals(String.Empty))
@@ -302,6 +312,7 @@ namespace UTTT.Ejemplo.Persona
             if (_persona.strCurp.Length > 18)
             {
                 _mensaje = "El CURP sale del rango establecido de caracteres";
+                return false;
             }
 
             return true;

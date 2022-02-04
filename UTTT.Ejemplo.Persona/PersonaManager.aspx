@@ -101,7 +101,7 @@
      
         <asp:Button ID="btnAceptar" runat="server" Text="Aceptar" 
             onclick="btnAceptar_Click" ViewStateMode="Disabled" style="height: 26px" 
-            onClientClick="validacionNoob()"/>
+            CausesValidation="False"/>
         &nbsp;&nbsp;&nbsp;
         <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" 
             onclick="btnCancelar_Click" ViewStateMode="Disabled" CausesValidation="False" />
