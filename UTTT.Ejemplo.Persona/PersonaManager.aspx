@@ -5,52 +5,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
-    <script>
-        function validacionNumeros(evt) {
-            let code = (evt.which) ? evt.which : evt.keyCode;
-            if (code == 0) {
-                return true;
-            } else if (code >= 48 && code <= 57) {
-                return true;
-            } else {
-                return false;
-            }
-        }
-
-        function validaLetras(evt) {
-            let key = evt.keyCode || evt.which;
-            let tecla = String.fromCharCode(key).toLowerCase();
-            let letras = 'áéíóúabcdefghijklmnñopqrstuvwxyz';
-            let especiales = '8-37-39-46';
-            let tecla_especial = false;
-            for (let i in especiales) {
-                if (key == especiales[i]) {
-                    tecla_especial = true;
-                    break;
-                }
-                if (letras.indexOf(tecla) == -1 && !tecla_especial) {
-                    return false;
-                }
-            }
-        }
-
-        function validaCaracteresEspeciales(evt) {
-            let key = evt.keyCode || evt.which;
-            let tecla = String.fromCharCode(key).toUpperCase();
-            let caracteres = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
-            let especiales = '8-37-39-46';
-            let tecla_especial = false;
-            for (let i in especiales) {
-                if (key == especiales[i]) {
-                    tecla_especial = true;
-                    break;
-                }
-                if (caracteres.indexOf(tecla) == -1 && !tecla_especial) {
-                    return false;
-                }
-            }
-        }
-    </script>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -78,7 +32,7 @@
                 Height="25px" Width="253px" 
                 onselectedindexchanged="ddlSexo_SelectedIndexChanged">
             </asp:DropDownList>
-            <asp:RangeValidator ID="RangeValidator1" runat="server" ControlToValidate="ddlSexo" ErrorMessage="Se debe seleccionar el sexo" MaximumValue="2" MinimumValue="1" Type="Integer"></asp:RangeValidator>
+            <asp:RangeValidator ID="rvdSexo" runat="server" ControlToValidate="ddlSexo" ErrorMessage="Se debe seleccionar el sexo" MaximumValue="2" MinimumValue="1" Type="Integer"></asp:RangeValidator>
     </div>
 
         </div>
@@ -146,7 +100,8 @@
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
      
         <asp:Button ID="btnAceptar" runat="server" Text="Aceptar" 
-            onclick="btnAceptar_Click" ViewStateMode="Disabled" style="height: 26px" />
+            onclick="btnAceptar_Click" ViewStateMode="Disabled" style="height: 26px" 
+            onClientClick="validacionNoob()"/>
         &nbsp;&nbsp;&nbsp;
         <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" 
             onclick="btnCancelar_Click" ViewStateMode="Disabled" CausesValidation="False" />
@@ -156,4 +111,64 @@
             &nbsp;</p>
     </form>
 </body>
+    <script>
+        function validacionNoob() {
+            let nombre = document.getElementById('<%= txtNombre.ClientID %>').value
+            let apellidoMaterno = document.getElementById('<%= txtAPaterno.ClientID %>').value;
+            let apellidoPaterno = document.getElementById('<%= txtAMaterno.ClientID %>').value ;
+            let curp = document.getElementById('<%= txtCurp.ClientID %>').value ;
+            let ddlSexo = document.getElementById('<%= ddlSexo.ClientID %>').value ;
+            let claveUnica = document.getElementById('<%=txtClaveUnica.ClientID %>').value;
+
+            if (nombre == "" && apellidoMaterno == "" && apellidoPaterno == "" && ddlSexo == -1 && curp == "" && claveUnica == "") {
+
+                window.location.href = "/PersonaPrincipal.aspx";
+            }
+        }
+
+        function validacionNumeros(evt) {
+            let code = (evt.which) ? evt.which : evt.keyCode;
+            if (code == 0) {
+                return true;
+            } else if (code >= 48 && code <= 57) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        function validaLetras(evt) {
+            let key = evt.keyCode || evt.which;
+            let tecla = String.fromCharCode(key).toLowerCase();
+            let letras = 'áéíóúabcdefghijklmnñopqrstuvwxyz';
+            let especiales = '8-37-39-46';
+            let tecla_especial = false;
+            for (let i in especiales) {
+                if (key == especiales[i]) {
+                    tecla_especial = true;
+                    break;
+                }
+                if (letras.indexOf(tecla) == -1 && !tecla_especial) {
+                    return false;
+                }
+            }
+        }
+
+        function validaCaracteresEspeciales(evt) {
+            let key = evt.keyCode || evt.which;
+            let tecla = String.fromCharCode(key).toUpperCase();
+            let caracteres = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
+            let especiales = '8-37-39-46';
+            let tecla_especial = false;
+            for (let i in especiales) {
+                if (key == especiales[i]) {
+                    tecla_especial = true;
+                    break;
+                }
+                if (caracteres.indexOf(tecla) == -1 && !tecla_especial) {
+                    return false;
+                }
+            }
+        }
+    </script>
 </html>
