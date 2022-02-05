@@ -30,7 +30,7 @@
 
         <div> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Sexo:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<asp:DropDownList ID="ddlSexo" runat="server" 
                 Height="25px" Width="253px" 
-                onselectedindexchanged="ddlSexo_SelectedIndexChanged">
+                >
             </asp:DropDownList>
             <asp:RangeValidator ID="rvdSexo" runat="server" ControlToValidate="ddlSexo" ErrorMessage="Se debe seleccionar el sexo" MaximumValue="2" MinimumValue="1" Type="Integer" validationgroup="vGFinal"></asp:RangeValidator>
     </div>
@@ -55,7 +55,7 @@
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         
             Nombre:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;<asp:TextBox 
-                ID="txtNombre" runat="server" Width="249px" ViewStateMode="Disabled" onkeypress="return  validaLetras(event);"></asp:TextBox>
+                ID="txtNombre" runat="server" Width="249px" ViewStateMode="Disabled" onkeypress="return  validaLetrasNombre(event);"></asp:TextBox>
         
             <asp:RequiredFieldValidator validationgroup="vGFinal" ID="rfvNombre" runat="server" ControlToValidate="txtNombre" ErrorMessage="El campo es obligatorio"></asp:RequiredFieldValidator>
         
@@ -141,6 +141,23 @@
             let key = evt.keyCode || evt.which;
             let tecla = String.fromCharCode(key).toLowerCase();
             let letras = 'áéíóúabcdefghijklmnñopqrstuvwxyz';
+            let especiales = '8-37-39-46';
+            let tecla_especial = false;
+            for (let i in especiales) {
+                if (key == especiales[i]) {
+                    tecla_especial = true;
+                    break;
+                }
+                if (letras.indexOf(tecla) == -1 && !tecla_especial) {
+                    return false;
+                }
+            }
+        }
+
+        function validaLetrasNombre(evt) {
+            let key = evt.keyCode || evt.which;
+            let tecla = String.fromCharCode(key).toLowerCase();
+            let letras = 'áéíóúabcdefghijklmnñopqrstuvwxyz ';
             let especiales = '8-37-39-46';
             let tecla_especial = false;
             for (let i in especiales) {
