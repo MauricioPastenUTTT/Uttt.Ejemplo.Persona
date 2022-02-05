@@ -115,7 +115,7 @@ namespace UTTT.Ejemplo.Persona
 
         protected void btnAceptar_Click(object sender, EventArgs e)
         {
-            if(this.txtClaveUnica.Text.Trim() == String.Empty && this.txtNombre.Text.Trim() == String.Empty &&
+            if (this.txtClaveUnica.Text.Trim() == String.Empty && this.txtNombre.Text.Trim() == String.Empty &&
                 this.txtAMaterno.Text.Trim() == String.Empty && this.txtAPaterno.Text.Trim() == String.Empty &&
                 this.txtCurp.Text.Trim() == String.Empty && int.Parse(this.ddlSexo.Text).Equals(-1))
             {
@@ -123,7 +123,8 @@ namespace UTTT.Ejemplo.Persona
             }
             else
             {
-                btnAceptar.ValidationGroup = "svGuardar";
+                btnAceptar.ValidationGroup = "vGFinal";
+                Page.Validate("vGFinal");
             }
             try
             {
@@ -312,6 +313,22 @@ namespace UTTT.Ejemplo.Persona
             if (_persona.strCurp.Length > 18)
             {
                 _mensaje = "El CURP sale del rango establecido de caracteres";
+                return false;
+            }
+
+            if (_persona.strNombre.Length < 3)
+            {
+                _mensaje = "Proporciona un nombre valido";
+                return false;
+            }
+            if (_persona.strAMaterno.Length < 3)
+            {
+                _mensaje = "Proporciona un apellido materno valido";
+                return false;
+            }
+            if (_persona.strAPaterno.Length < 3)
+            {
+                _mensaje = "Proporciona un apellido paterno valido";
                 return false;
             }
 
