@@ -126,6 +126,10 @@ namespace UTTT.Ejemplo.Persona
                 btnAceptar.ValidationGroup = "vGFinal";
                 Page.Validate("vGFinal");
             }
+            if (!Page.IsValid)
+            {
+                return;
+            }
             try
             {
                 DataContext dcGuardar = new DcGeneralDataContext();
@@ -163,6 +167,15 @@ namespace UTTT.Ejemplo.Persona
                     persona.strAPaterno = this.txtAPaterno.Text.Trim();
                     persona.strCurp = this.txtCurp.Text.Trim();
                     persona.idCatSexo = int.Parse(this.ddlSexo.Text);
+
+                    String mensaje = String.Empty;
+                    if (!this.validacion(persona, ref mensaje))
+                    {
+                        this.lblMensaje.Text = mensaje;
+                        this.lblMensaje.Visible = true;
+                        return;
+                    }
+
                     dcGuardar.SubmitChanges();
                     this.showMessage("El registro se edito correctamente.");
                     this.Response.Redirect("~/PersonaPrincipal.aspx", false);
