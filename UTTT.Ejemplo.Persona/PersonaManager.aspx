@@ -1,5 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="PersonaManager.aspx.cs" Inherits="UTTT.Ejemplo.Persona.PersonaManager" Debug="false" %>
-
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -9,6 +9,8 @@
 </head>
 <body>
     <form id="form1" runat="server">
+        <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePageMethods="true">
+            </asp:ScriptManager>
         <div class="container">
             <h1>Persona</h1>
         </div>
@@ -21,48 +23,62 @@
         <div class="container w-25">
             <div class="row">
                 <div class="col">
-                    <label>Sexo:</label>
-                    <asp:DropDownList ID="ddlSexo" runat="server"
-                        class="btn btn-info dropdown-toggle w-75">
-                    </asp:DropDownList>
-                    <asp:RangeValidator ID="rvdSexo" runat="server" ControlToValidate="ddlSexo" ErrorMessage="Se debe seleccionar el sexo" MaximumValue="2" MinimumValue="1" Type="Integer" ValidationGroup="vGFinal"></asp:RangeValidator>
+                    <label>
+                        Sexo:<asp:RangeValidator ID="rvdSexo" runat="server" ControlToValidate="ddlSexo" ErrorMessage="Se debe seleccionar el sexo" MaximumValue="2" MinimumValue="1" Type="Integer" ValidationGroup="vGFinal"></asp:RangeValidator>
+                    </label>
+                    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                        <ContentTemplate>
+                            <asp:DropDownList ID="ddlSexo" runat="server"
+                                class="btn btn-info dropdown-toggle w-75">
+                             </asp:DropDownList>
+                        </ContentTemplate>
+                        <Triggers>
+                            <asp:AsyncPostBackTrigger ControlID="ddlSexo" EventName="SelectedIndexChanged" />
+                        </Triggers>
+                    </asp:UpdatePanel>
                 </div>
                 <div class="col">
-                    <label>Clave Unica:</label>
-                    <asp:TextBox ID="txtClaveUnica" runat="server"
+                    <label>Clave Unica:</label><asp:RequiredFieldValidator ValidationGroup="vGFinal" ID="rfvClaveUnica" runat="server" ControlToValidate="txtClaveUnica" ErrorMessage="El campo es obligatorio"></asp:RequiredFieldValidator>
+                    &nbsp;<asp:TextBox ID="txtClaveUnica" runat="server"
                         Width="249px" ViewStateMode="Disabled"
                         onkeypress="return validacionNumeros(event);" pattern=".{1,3}"
                         title="1 a 3 es la longitud que se permite ingresar"></asp:TextBox>
-                    <asp:RequiredFieldValidator ValidationGroup="vGFinal" ID="rfvClaveUnica" runat="server" ControlToValidate="txtClaveUnica" ErrorMessage="El campo es obligatorio"></asp:RequiredFieldValidator>
                     <asp:RangeValidator ValidationGroup="vGFinal" ID="rvClaveUnica" runat="server" ControlToValidate="txtClaveUnica" ErrorMessage="*La clave unica debe estar entre 100 y 999" MaximumValue="999" MinimumValue="100" Type="Integer"></asp:RangeValidator>
                 </div>
                 <div class="col">
                     <label>Nombre:</label>
-                    <asp:TextBox ID="txtNombre" runat="server" Width="249px" ViewStateMode="Disabled" onkeypress="return  validaLetrasNombre(event);"></asp:TextBox>
                     <asp:RequiredFieldValidator ValidationGroup="vGFinal" ID="rfvNombre" runat="server" ControlToValidate="txtNombre" ErrorMessage="El campo es obligatorio"></asp:RequiredFieldValidator>
+                    <asp:TextBox ID="txtNombre" runat="server" Width="249px" ViewStateMode="Disabled" onkeypress="return  validaLetrasNombre(event);"></asp:TextBox>
                 </div>
                 <div class="col">
-                    <label>A Paterno:</label>
-                    <asp:TextBox ID="txtAPaterno" runat="server" Width="249px" ViewStateMode="Disabled" onkeypress="return  validaLetras(event);"></asp:TextBox>
-                    <asp:RequiredFieldValidator ValidationGroup="vGFinal" ID="rfvAPaterno" runat="server" ControlToValidate="txtAPaterno" ErrorMessage="El campo es obligatorio"></asp:RequiredFieldValidator>
+                    <label>A Paterno:</label><asp:RequiredFieldValidator ValidationGroup="vGFinal" ID="rfvAPaterno" runat="server" ControlToValidate="txtAPaterno" ErrorMessage="El campo es obligatorio"></asp:RequiredFieldValidator>
+                    &nbsp;<asp:TextBox ID="txtAPaterno" runat="server" Width="249px" ViewStateMode="Disabled" onkeypress="return  validaLetras(event);"></asp:TextBox>
                 </div>
                 <div class="col">
-                    <label>A Materno:</label>
-                    <asp:TextBox ID="txtAMaterno" runat="server" Width="248px"
+                    <label>A Materno:</label><asp:RequiredFieldValidator ValidationGroup="vGFinal" ID="rfvAMaterno" runat="server" ControlToValidate="txtAMaterno" ErrorMessage="El campo es obligatorio"></asp:RequiredFieldValidator>
+                    &nbsp;<asp:TextBox ID="txtAMaterno" runat="server" Width="248px"
                         ViewStateMode="Disabled" onkeypress="return  validaLetras(event);"></asp:TextBox>
-                    <asp:RequiredFieldValidator ValidationGroup="vGFinal" ID="rfvAMaterno" runat="server" ControlToValidate="txtAMaterno" ErrorMessage="El campo es obligatorio"></asp:RequiredFieldValidator>
                 </div>
                 <div class="col">
                     <label>CURP:</label>
+                    <asp:RegularExpressionValidator ValidationGroup="vGFinal" ID="regexCurp" runat="server" ControlToValidate="txtCurp" ErrorMessage="El formato del CURP es incorrecto" ValidationExpression="^([A-Z][AEIOUX][A-Z]{2}\d{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[12]\d|3[01])[HM](?:AS|B[CS]|C[CLMSH]|D[FG]|G[TR]|HG|JC|M[CNS]|N[ETL]|OC|PL|Q[TR]|S[PLR]|T[CSL]|VZ|YN|ZS)[B-DF-HJ-NP-TV-Z]{3}[A-Z\d])(\d)$"></asp:RegularExpressionValidator>
+                    <asp:RequiredFieldValidator ValidationGroup="vGFinal" ID="rfvCurp" runat="server" ControlToValidate="txtCurp" ErrorMessage="El campo es obligatorio"></asp:RequiredFieldValidator>
                     <asp:TextBox ID="txtCurp" runat="server" Width="248px"
                         ViewStateMode="Disabled" onkeypress="return  validaCaracteresEspeciales(event);"
                         pattern=".{1,18}" title="El curp solo admite hasta 18 caracteres"></asp:TextBox>
-                    <asp:RequiredFieldValidator ValidationGroup="vGFinal" ID="rfvCurp" runat="server" ControlToValidate="txtCurp" ErrorMessage="El campo es obligatorio"></asp:RequiredFieldValidator>
-                    <asp:RegularExpressionValidator ValidationGroup="vGFinal" ID="regexCurp" runat="server" ControlToValidate="txtCurp" ErrorMessage="El formato del CURP es incorrecto" ValidationExpression="^([A-Z][AEIOUX][A-Z]{2}\d{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[12]\d|3[01])[HM](?:AS|B[CS]|C[CLMSH]|D[FG]|G[TR]|HG|JC|M[CNS]|N[ETL]|OC|PL|Q[TR]|S[PLR]|T[CSL]|VZ|YN|ZS)[B-DF-HJ-NP-TV-Z]{3}[A-Z\d])(\d)$"></asp:RegularExpressionValidator>
                 </div>
                 <div class="col">
+                    <label>Fecha de nacimiento:</label>
+                    <asp:TextBox ID="txtFechaNacimiento" runat="server" CssClass="w-75"></asp:TextBox>
+                    <asp:ImageButton ID="imgPopup" ImageUrl="Images/calendar.png"
+                        runat="server" CausesValidation="False" Width="25px"/>
+                    <ajaxToolkit:CalendarExtender ID="CalendarExtender1" PopupButtonID="imgPopup" Format="dd/MM/yyyy"
+                        runat="server" TargetControlID="txtFechaNacimiento"/>
+                </div>
+                <div class="">
                     <asp:Label ID="lblMensaje" runat="server" ForeColor="Red" Visible="False"></asp:Label>
                 </div>
+                <br />
                 <div class="col">
                     <asp:Button ID="btnAceptar" runat="server" Text="Aceptar"
                         OnClick="btnAceptar_Click" ViewStateMode="Disabled"
