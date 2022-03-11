@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace UTTT.Ejemplo.Persona {
-    
-    
-    public partial class PersonaPrincipal {
-        
+namespace UTTT.Ejemplo.Persona
+{
+
+
+    public partial class PersonaPrincipal
+    {
+
         /// <summary>
         /// form1 control.
         /// </summary>
@@ -20,7 +22,16 @@ namespace UTTT.Ejemplo.Persona {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-        
+
+        /// <summary>
+        /// ScriptManager1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.ScriptManager ScriptManager1;
+
         /// <summary>
         /// txtNombre control.
         /// </summary>
@@ -29,7 +40,16 @@ namespace UTTT.Ejemplo.Persona {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtNombre;
-        
+
+        /// <summary>
+        /// AutoCompleteExtender1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.AutoCompleteExtender AutoCompleteExtender1;
+
         /// <summary>
         /// btnBuscar control.
         /// </summary>
@@ -38,7 +58,7 @@ namespace UTTT.Ejemplo.Persona {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnBuscar;
-        
+
         /// <summary>
         /// btnAgregar control.
         /// </summary>
@@ -47,7 +67,7 @@ namespace UTTT.Ejemplo.Persona {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnAgregar;
-        
+
         /// <summary>
         /// ddlSexo control.
         /// </summary>
@@ -56,7 +76,7 @@ namespace UTTT.Ejemplo.Persona {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlSexo;
-        
+
         /// <summary>
         /// dgvPersonas control.
         /// </summary>
@@ -65,7 +85,7 @@ namespace UTTT.Ejemplo.Persona {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView dgvPersonas;
-        
+
         /// <summary>
         /// DataSourcePersona control.
         /// </summary>

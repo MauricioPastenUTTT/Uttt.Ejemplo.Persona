@@ -1,5 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="PersonaPrincipal.aspx.cs" Inherits="UTTT.Ejemplo.Persona.PersonaPrincipal"  debug=false%>
-
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -11,7 +11,10 @@
     <form id="form1" runat="server">
     
     <div class="container">
-        <h1>Persona</h1>
+        <h1>
+            <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePageMethods="true">
+            </asp:ScriptManager>
+            Persona</h1>
     </div>
     <hr />
 
@@ -19,7 +22,10 @@
     <p>
         <label>Nombre</label>
         <asp:TextBox ID="txtNombre" runat="server" Width="174px" 
-            ViewStateMode="Disabled"></asp:TextBox>
+            ViewStateMode="Disabled" AutoPostBack="true" OnTextChanged="txtNombre_TextChanged"></asp:TextBox>
+        <ajaxToolkit:AutoCompleteExtender ID="AutoCompleteExtender1" runat="server" CompletionInterval="100" 
+            MinimumPrefixLength="2" ServiceMethod="txtNombre_TextChanged" TargetControlID="txtNombre">
+        </ajaxToolkit:AutoCompleteExtender>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:Button ID="btnBuscar" runat="server" Text="Buscar" 
             onclick="btnBuscar_Click" ViewStateMode="Disabled" class="btn btn-outline-info"/>

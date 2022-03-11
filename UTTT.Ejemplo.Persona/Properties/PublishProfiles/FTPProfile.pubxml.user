@@ -8,38 +8,41 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <TimeStampOfAssociatedLegacyPublishXmlFile />
     <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAmRFeezMBkkqY+nSp5C9dGQAAAAACAAAAAAAQZgAAAAEAACAAAACu/VmQ/9nmPH+Ud9WyOWxXk9YKnTvYdSC0x45J9Lh9zQAAAAAOgAAAAAIAACAAAABzubLY3LcSTa7dZyRJdeSL3OKDs1fKYGp6rvOoggDXIyAAAABO46SkjyWSOy20St6aax06bjdnlRbJdlvLo2XTGZWUVEAAAADYdYWQmdc0oNamfbnhtOyfeNbJAh+lQPvMek4fzSxws4gGucwg50GB/1m1TwBGbSiajC3Vl4CwlpgcfynN7Miv</EncryptedPassword>
     <_PublishTargetUrl>ftp://MauricioUTTT.somee.com/www.MauricioUTTT.somee.com</_PublishTargetUrl>
-    <History>True|2022-01-30T00:57:39.7861988Z;True|2022-01-29T18:56:14.3806657-06:00;True|2022-01-29T18:53:11.7319154-06:00;</History>
+    <History>True|2022-03-10T05:45:54.6077827Z;True|2022-02-05T06:06:03.6281010-06:00;True|2022-02-05T04:23:57.7873169-06:00;True|2022-02-05T04:08:19.7777137-06:00;True|2022-02-05T03:27:22.5400894-06:00;True|2022-02-05T03:25:21.2991681-06:00;True|2022-02-05T02:04:22.0002682-06:00;True|2022-02-05T00:20:35.1963479-06:00;True|2022-02-04T23:48:16.4364573-06:00;True|2022-02-04T04:26:35.4004053-06:00;True|2022-02-02T11:29:06.7234594-06:00;False|2022-02-02T11:27:09.8327877-06:00;True|2022-02-02T02:51:12.0682794-06:00;True|2022-01-31T16:48:44.1885958-06:00;True|2022-01-30T12:20:32.2203932-06:00;True|2022-01-30T12:16:28.2988933-06:00;True|2022-01-29T18:57:39.7861988-06:00;True|2022-01-29T18:56:14.3806657-06:00;True|2022-01-29T18:53:11.7319154-06:00;</History>
   </PropertyGroup>
   <ItemGroup>
     <File Include="bin/UTTT.Ejemplo.Linq.Data.dll">
-      <publishTime>01/29/2022 18:35:39</publishTime>
+      <publishTime>02/05/2022 00:35:27</publishTime>
     </File>
     <File Include="bin/UTTT.Ejemplo.Linq.Data.dll.config">
-      <publishTime>01/29/2022 18:32:59</publishTime>
+      <publishTime>01/29/2022 22:48:50</publishTime>
     </File>
     <File Include="bin/UTTT.Ejemplo.Linq.Data.pdb">
-      <publishTime>01/29/2022 18:35:39</publishTime>
+      <publishTime>02/05/2022 00:35:27</publishTime>
     </File>
     <File Include="bin/UTTT.Ejemplo.Persona.Control.dll">
-      <publishTime>01/29/2022 18:35:40</publishTime>
+      <publishTime>02/05/2022 00:35:27</publishTime>
     </File>
     <File Include="bin/UTTT.Ejemplo.Persona.Control.pdb">
-      <publishTime>01/29/2022 18:35:40</publishTime>
+      <publishTime>02/05/2022 00:35:27</publishTime>
     </File>
     <File Include="bin/UTTT.Ejemplo.Persona.Data.dll">
-      <publishTime>01/29/2022 17:20:34</publishTime>
+      <publishTime>02/05/2022 00:35:27</publishTime>
     </File>
     <File Include="bin/UTTT.Ejemplo.Persona.Data.pdb">
-      <publishTime>01/29/2022 17:20:34</publishTime>
+      <publishTime>02/05/2022 00:35:27</publishTime>
     </File>
     <File Include="bin/UTTT.Ejemplo.Persona.dll">
-      <publishTime>01/29/2022 18:55:29</publishTime>
+      <publishTime>03/09/2022 23:43:34</publishTime>
     </File>
     <File Include="bin/UTTT.Ejemplo.Persona.pdb">
-      <publishTime>01/29/2022 18:55:29</publishTime>
+      <publishTime>03/09/2022 23:43:34</publishTime>
     </File>
     <File Include="controlformato.css">
       <publishTime>01/29/2022 17:20:34</publishTime>
+    </File>
+    <File Include="css/bootstrap.css">
+      <publishTime>03/10/2022 04:23:44</publishTime>
     </File>
     <File Include="Default.aspx">
       <publishTime>01/29/2022 17:20:34</publishTime>
@@ -74,14 +77,23 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="paginaMaster.Master">
       <publishTime>01/29/2022 17:20:34</publishTime>
     </File>
+    <File Include="PantallaError.aspx">
+      <publishTime>01/31/2022 15:53:17</publishTime>
+    </File>
     <File Include="PersonaManager.aspx">
-      <publishTime>01/29/2022 17:20:34</publishTime>
+      <publishTime>03/09/2022 23:38:59</publishTime>
     </File>
     <File Include="PersonaPrincipal.aspx">
-      <publishTime>01/29/2022 17:20:34</publishTime>
+      <publishTime>03/09/2022 23:18:28</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>01/29/2022 18:56:59</publishTime>
+      <publishTime>03/09/2022 23:43:43</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.bundle.js">
+      <publishTime>03/09/2022 22:58:19</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.js">
+      <publishTime>03/10/2022 04:26:02</publishTime>
     </File>
     <File Include="Scripts/jquery-1.4.1-vsdoc.js">
       <publishTime>01/29/2022 17:20:34</publishTime>
@@ -93,7 +105,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/29/2022 17:20:34</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>01/29/2022 18:56:58</publishTime>
+      <publishTime>02/04/2022 04:25:44</publishTime>
     </File>
   </ItemGroup>
 </Project>

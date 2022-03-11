@@ -198,6 +198,18 @@ namespace UTTT.Ejemplo.Persona
             }
         }
 
+        protected void txtNombre_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                this.DataSourcePersona.RaiseViewChanged();
+            }
+            catch (Exception exception)
+            {
+                this.showMessage("Ha ocurrido un problema al buscar: " + exception);
+            }
+        }
+
         #endregion
     }
 }
