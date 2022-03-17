@@ -201,18 +201,20 @@ namespace UTTT.Ejemplo.Persona
             }
             catch (Exception _e)
             {
+                this.lblMensaje.Text = "Error en fecha de nacimiento";
+                this.lblMensaje.Visible = true;
                 // Qué ha sucedido
-                var mensaje = "Error message: " + _e.Message;
+                //var mensaje = "Error message: " + _e.Message;
 
                 // Información sobre la excepción interna
-                if (_e.InnerException != null)
-                {
-                    mensaje = mensaje + " Inner exception: " + _e.InnerException.Message;
-                }
+                //if (_e.InnerException != null)
+                //{
+                //mensaje = mensaje + " Inner exception: " + _e.InnerException.Message;
+                //}
 
                 // Dónde ha sucedido
-                mensaje = mensaje + " Stack trace: " + _e.StackTrace;
-                envioDeCorreo("Excepcion Guardar", "Ah ocurrido un error inesperado al guardar persona en el aplicativo UTTT.Ejemplo.Persona: " + mensaje);
+                //mensaje = mensaje + " Stack trace: " + _e.StackTrace;
+                //envioDeCorreo("Excepcion Guardar", "Ah ocurrido un error inesperado al guardar persona en el aplicativo UTTT.Ejemplo.Persona: " + mensaje);
             }
         }
 
