@@ -121,8 +121,6 @@
                             </div>
                             <div class="col-12">
                                 <asp:TextBox ID="txtFechaNacimiento" runat="server" CssClass=""></asp:TextBox>
-                            </div>
-                            <div class="col-12">
                                 <asp:ImageButton ID="imgPopup" ImageUrl="Images/calendar.png"
                                     runat="server" CausesValidation="False" Width="25px" />
                             </div>
