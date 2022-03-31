@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Data;
 using UTTT.Ejemplo.Persona.Control.Interface;
-using UTTT.Ejemplo.Persona.Data.Entity;
 using System.Data.SqlClient;
 
 namespace UTTT.Ejemplo.Persona.Control.Ctrl

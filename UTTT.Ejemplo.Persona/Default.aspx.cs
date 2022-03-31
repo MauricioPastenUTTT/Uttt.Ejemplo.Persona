@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using UTTT.Ejemplo.Persona.Control;
 using UTTT.Ejemplo.Persona.Control.Ctrl;
 using UTTT.Ejemplo.Persona.Data.Entity;
-using UTTT.Ejemplo.Persona.Control;
 
 namespace UTTT.Ejemplo.Persona
 {
