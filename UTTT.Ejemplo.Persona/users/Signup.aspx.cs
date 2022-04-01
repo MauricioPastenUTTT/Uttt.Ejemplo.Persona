@@ -103,10 +103,10 @@ namespace UTTT.Ejemplo.Persona.users
                 DataContext DcGeneral = new DcGeneralDataContext();
                 User user = new User
                 {
-                    name = this.name.Text.Trim(),
-                    lastname = this.lastname.Text.Trim(),
-                    username = this.username.Text.Trim(),
-                    password = MCrypt.Encrypt(this.password.Text.Trim()),
+                    name = name,
+                    lastname = lastname,
+                    username = username,
+                    password = MCrypt.Encrypt(password),
                     role = 2,
                     active = true
                 };

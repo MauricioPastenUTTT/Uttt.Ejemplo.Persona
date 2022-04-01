@@ -1,10 +1,10 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ForgetPassword.aspx.cs" Inherits="UTTT.Ejemplo.Persona.users.ForgetPassword" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AddRole.aspx.cs" Inherits="UTTT.Ejemplo.Persona.roles.AddRole" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>Forget password</title>
+    <title>Add Role</title>
     <link href="../css/bootstrap.css" type="text/css" rel="Stylesheet" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 </head>
@@ -19,27 +19,23 @@
         <% } %>
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title text-center">Signup
+                <h3 class="card-title text-center">Add Role
                 </h3>
             </div>
             <div class="card-body">
                 <form id="formSignup" runat="server">
                     <div class="form-group">
-                        <label>Username</label>
-                        <asp:TextBox ID="username" runat="server" CssClass="form-control"></asp:TextBox>
+                        <label>Role name:</label>
+                        <asp:TextBox ID="role" runat="server" CssClass="form-control"></asp:TextBox>
                     </div>
                     <div class="form-group">
-                        <label>New Password</label>
-                        <asp:TextBox TextMode="Password" ID="password" runat="server" CssClass="form-control"></asp:TextBox>
-                    </div>
-                    <div class="form-group">
-                        <label>Confirm Password</label>
-                        <asp:TextBox TextMode="Password" ID="passwordConfirm" runat="server" CssClass="form-control"></asp:TextBox>
+                        <label>Description</label>
+                        <asp:TextBox ID="description" runat="server" CssClass="form-control"></asp:TextBox>
                     </div>
                     <hr />
                     <div class="form-group mt-2">
                         <asp:Button ID="btnCancelar" Text="Cancel" CssClass="btn btn-danger" OnClick="btnCancelar_Click" runat="server" />
-                        <asp:Button ID="btnUpdatePassword" Text="Update password" CssClass="btn btn-info" OnClick="btnUpdatePassword_Click" runat="server" />
+                        <asp:Button ID="btnUpdate" Text="Signup" CssClass="btn btn-info" OnClick="btnUpdate_Click" runat="server" />
                     </div>
                 </form>
             </div>

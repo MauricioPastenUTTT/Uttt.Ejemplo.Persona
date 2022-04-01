@@ -13,9 +13,9 @@ namespace UTTT.Ejemplo.Persona.views
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["username"] != null || Session["password"] != null)
+            if (Session["username"] != null || Session["password"] != null || Session["role"] != null)
             {
-                this.Response.Redirect("~/Home.aspx", false);
+                this.Response.Redirect("~/Menu.aspx", false);
             }
         }
 
@@ -45,7 +45,7 @@ namespace UTTT.Ejemplo.Persona.views
                 Session["username"] = this.username.Text;
                 Session["password"] = this.password.Text;
                 Session["role"] = username.role;
-                this.Response.Redirect("~/Home.aspx", false);
+                this.Response.Redirect("~/Menu.aspx", false);
             }
             catch (Exception ex)
             {
@@ -58,6 +58,18 @@ namespace UTTT.Ejemplo.Persona.views
             try
             {
                 this.Response.Redirect("~/users/ForgetPassword.aspx", false);
+            }
+            catch (Exception _e)
+            {
+                this.Response.Redirect("~/PantallaError.aspx");
+            }
+        }
+
+        protected void btnSignup_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.Response.Redirect("~/users/Signup.aspx", false);
             }
             catch (Exception _e)
             {

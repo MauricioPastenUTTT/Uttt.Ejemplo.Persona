@@ -7,65 +7,56 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace UTTT.Ejemplo.Persona.views
+namespace UTTT.Ejemplo.Persona.roles
 {
 
 
-    public partial class Signin
+    public partial class UpdateRole
     {
 
         /// <summary>
-        /// formSignin control.
+        /// formSignup control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm formSignin;
+        protected global::System.Web.UI.HtmlControls.HtmlForm formSignup;
 
         /// <summary>
-        /// username control.
+        /// role control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox username;
+        protected global::System.Web.UI.WebControls.TextBox role;
 
         /// <summary>
-        /// password control.
+        /// description control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox password;
+        protected global::System.Web.UI.WebControls.TextBox description;
 
         /// <summary>
-        /// btnSignin control.
+        /// btnCancelar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSignin;
+        protected global::System.Web.UI.WebControls.Button btnCancelar;
 
         /// <summary>
-        /// btnSignup control.
+        /// btnUpdate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSignup;
-
-        /// <summary>
-        /// btnForgetPassword control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnForgetPassword;
+        protected global::System.Web.UI.WebControls.Button btnUpdate;
     }
 }

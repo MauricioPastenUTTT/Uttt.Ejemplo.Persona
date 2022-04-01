@@ -9,33 +9,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="../Home.aspx">
-                <img src="../Images/bootstrap.png" class="w-25"></img>
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="../Home.aspx">Home</a>
-                    </li>
-                </ul>
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Account
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="Signin.aspx">Signin</a></li>
-                            <li><a class="dropdown-item" href="Signup.aspx">Signup</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
     <div class="container mx-auto mt-4 col-lg-4 col-md-12 col-sm-12">
         <% if (message)
             { %>
@@ -65,6 +38,7 @@
                     <hr />
                     <div class="form-group mt-2">
                         <asp:Button ID="btnSignin" Text="Signin" CssClass="btn btn-primary" OnClick="btnSignin_Click" runat="server" />
+                        <asp:Button ID="btnSignup" Text="Signup" CssClass="btn btn-warning" OnClick="btnSignup_Click" runat="server" />
                         <asp:Button ID="btnForgetPassword" Text="Forget your password?" CssClass="btn btn-outline-info" OnClick="btnForgetPassword_Click" runat="server" />
                     </div>
                 </form>

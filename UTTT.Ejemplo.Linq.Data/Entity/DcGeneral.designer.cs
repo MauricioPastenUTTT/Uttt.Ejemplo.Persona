@@ -45,15 +45,15 @@ namespace UTTT.Ejemplo.Linq.Data.Entity
     partial void InsertProduct(Product instance);
     partial void UpdateProduct(Product instance);
     partial void DeleteProduct(Product instance);
+    partial void InsertUsuario(Usuario instance);
+    partial void UpdateUsuario(Usuario instance);
+    partial void DeleteUsuario(Usuario instance);
     partial void InsertRole(Role instance);
     partial void UpdateRole(Role instance);
     partial void DeleteRole(Role instance);
     partial void InsertUser(User instance);
     partial void UpdateUser(User instance);
     partial void DeleteUser(User instance);
-    partial void InsertUsuario(Usuario instance);
-    partial void UpdateUsuario(Usuario instance);
-    partial void DeleteUsuario(Usuario instance);
     #endregion
 		
 		public DcGeneralDataContext() : 
@@ -126,6 +126,14 @@ namespace UTTT.Ejemplo.Linq.Data.Entity
 			}
 		}
 		
+		public System.Data.Linq.Table<Usuario> Usuarios
+		{
+			get
+			{
+				return this.GetTable<Usuario>();
+			}
+		}
+		
 		public System.Data.Linq.Table<Role> Roles
 		{
 			get
@@ -139,14 +147,6 @@ namespace UTTT.Ejemplo.Linq.Data.Entity
 			get
 			{
 				return this.GetTable<User>();
-			}
-		}
-		
-		public System.Data.Linq.Table<Usuario> Usuarios
-		{
-			get
-			{
-				return this.GetTable<Usuario>();
 			}
 		}
 	}
@@ -1179,17 +1179,21 @@ namespace UTTT.Ejemplo.Linq.Data.Entity
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Role")]
-	public partial class Role : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Usuario")]
+	public partial class Usuario : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
 		private int _id;
 		
-		private string _role1;
+		private int _idPersona;
 		
-		private EntitySet<User> _Users;
+		private string _strNombreUsuario;
+		
+		private string _strPassword;
+		
+		private EntityRef<Persona> _Persona;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -1197,13 +1201,17 @@ namespace UTTT.Ejemplo.Linq.Data.Entity
     partial void OnCreated();
     partial void OnidChanging(int value);
     partial void OnidChanged();
-    partial void Onrole1Changing(string value);
-    partial void Onrole1Changed();
+    partial void OnidPersonaChanging(int value);
+    partial void OnidPersonaChanged();
+    partial void OnstrNombreUsuarioChanging(string value);
+    partial void OnstrNombreUsuarioChanged();
+    partial void OnstrPasswordChanging(string value);
+    partial void OnstrPasswordChanged();
     #endregion
 		
-		public Role()
+		public Usuario()
 		{
-			this._Users = new EntitySet<User>(new Action<User>(this.attach_Users), new Action<User>(this.detach_Users));
+			this._Persona = default(EntityRef<Persona>);
 			OnCreated();
 		}
 		
@@ -1227,22 +1235,213 @@ namespace UTTT.Ejemplo.Linq.Data.Entity
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="role", Storage="_role1", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string role1
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idPersona", DbType="Int NOT NULL")]
+		public int idPersona
 		{
 			get
 			{
-				return this._role1;
+				return this._idPersona;
 			}
 			set
 			{
-				if ((this._role1 != value))
+				if ((this._idPersona != value))
 				{
-					this.Onrole1Changing(value);
+					if (this._Persona.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnidPersonaChanging(value);
 					this.SendPropertyChanging();
-					this._role1 = value;
-					this.SendPropertyChanged("role1");
-					this.Onrole1Changed();
+					this._idPersona = value;
+					this.SendPropertyChanged("idPersona");
+					this.OnidPersonaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_strNombreUsuario", DbType="NChar(10)")]
+		public string strNombreUsuario
+		{
+			get
+			{
+				return this._strNombreUsuario;
+			}
+			set
+			{
+				if ((this._strNombreUsuario != value))
+				{
+					this.OnstrNombreUsuarioChanging(value);
+					this.SendPropertyChanging();
+					this._strNombreUsuario = value;
+					this.SendPropertyChanged("strNombreUsuario");
+					this.OnstrNombreUsuarioChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_strPassword", DbType="NChar(10)")]
+		public string strPassword
+		{
+			get
+			{
+				return this._strPassword;
+			}
+			set
+			{
+				if ((this._strPassword != value))
+				{
+					this.OnstrPasswordChanging(value);
+					this.SendPropertyChanging();
+					this._strPassword = value;
+					this.SendPropertyChanged("strPassword");
+					this.OnstrPasswordChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Persona_Usuario", Storage="_Persona", ThisKey="idPersona", OtherKey="id", IsForeignKey=true)]
+		public Persona Persona
+		{
+			get
+			{
+				return this._Persona.Entity;
+			}
+			set
+			{
+				Persona previousValue = this._Persona.Entity;
+				if (((previousValue != value) 
+							|| (this._Persona.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Persona.Entity = null;
+						previousValue.Usuarios.Remove(this);
+					}
+					this._Persona.Entity = value;
+					if ((value != null))
+					{
+						value.Usuarios.Add(this);
+						this._idPersona = value.id;
+					}
+					else
+					{
+						this._idPersona = default(int);
+					}
+					this.SendPropertyChanged("Persona");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Role")]
+	public partial class Role : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id;
+		
+		private string _name;
+		
+		private string _description;
+		
+		private EntitySet<User> _Users;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidChanging(int value);
+    partial void OnidChanged();
+    partial void OnnameChanging(string value);
+    partial void OnnameChanged();
+    partial void OndescriptionChanging(string value);
+    partial void OndescriptionChanged();
+    #endregion
+		
+		public Role()
+		{
+			this._Users = new EntitySet<User>(new Action<User>(this.attach_Users), new Action<User>(this.detach_Users));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id
+		{
+			get
+			{
+				return this._id;
+			}
+			set
+			{
+				if ((this._id != value))
+				{
+					this.OnidChanging(value);
+					this.SendPropertyChanging();
+					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_name", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string name
+		{
+			get
+			{
+				return this._name;
+			}
+			set
+			{
+				if ((this._name != value))
+				{
+					this.OnnameChanging(value);
+					this.SendPropertyChanging();
+					this._name = value;
+					this.SendPropertyChanged("name");
+					this.OnnameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_description", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
+		public string description
+		{
+			get
+			{
+				return this._description;
+			}
+			set
+			{
+				if ((this._description != value))
+				{
+					this.OndescriptionChanging(value);
+					this.SendPropertyChanging();
+					this._description = value;
+					this.SendPropertyChanged("description");
+					this.OndescriptionChanged();
 				}
 			}
 		}
@@ -1421,7 +1620,7 @@ namespace UTTT.Ejemplo.Linq.Data.Entity
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_password", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_password", DbType="VarChar(200) NOT NULL", CanBeNull=false)]
 		public string password
 		{
 			get
@@ -1515,181 +1714,6 @@ namespace UTTT.Ejemplo.Linq.Data.Entity
 						this._role = default(int);
 					}
 					this.SendPropertyChanged("Role1");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Usuario")]
-	public partial class Usuario : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _id;
-		
-		private int _idPersona;
-		
-		private string _strNombreUsuario;
-		
-		private string _strPassword;
-		
-		private EntityRef<Persona> _Persona;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnidChanging(int value);
-    partial void OnidChanged();
-    partial void OnidPersonaChanging(int value);
-    partial void OnidPersonaChanged();
-    partial void OnstrNombreUsuarioChanging(string value);
-    partial void OnstrNombreUsuarioChanged();
-    partial void OnstrPasswordChanging(string value);
-    partial void OnstrPasswordChanged();
-    #endregion
-		
-		public Usuario()
-		{
-			this._Persona = default(EntityRef<Persona>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int id
-		{
-			get
-			{
-				return this._id;
-			}
-			set
-			{
-				if ((this._id != value))
-				{
-					this.OnidChanging(value);
-					this.SendPropertyChanging();
-					this._id = value;
-					this.SendPropertyChanged("id");
-					this.OnidChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idPersona", DbType="Int NOT NULL")]
-		public int idPersona
-		{
-			get
-			{
-				return this._idPersona;
-			}
-			set
-			{
-				if ((this._idPersona != value))
-				{
-					if (this._Persona.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnidPersonaChanging(value);
-					this.SendPropertyChanging();
-					this._idPersona = value;
-					this.SendPropertyChanged("idPersona");
-					this.OnidPersonaChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_strNombreUsuario", DbType="NChar(10)")]
-		public string strNombreUsuario
-		{
-			get
-			{
-				return this._strNombreUsuario;
-			}
-			set
-			{
-				if ((this._strNombreUsuario != value))
-				{
-					this.OnstrNombreUsuarioChanging(value);
-					this.SendPropertyChanging();
-					this._strNombreUsuario = value;
-					this.SendPropertyChanged("strNombreUsuario");
-					this.OnstrNombreUsuarioChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_strPassword", DbType="NChar(10)")]
-		public string strPassword
-		{
-			get
-			{
-				return this._strPassword;
-			}
-			set
-			{
-				if ((this._strPassword != value))
-				{
-					this.OnstrPasswordChanging(value);
-					this.SendPropertyChanging();
-					this._strPassword = value;
-					this.SendPropertyChanged("strPassword");
-					this.OnstrPasswordChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Persona_Usuario", Storage="_Persona", ThisKey="idPersona", OtherKey="id", IsForeignKey=true)]
-		public Persona Persona
-		{
-			get
-			{
-				return this._Persona.Entity;
-			}
-			set
-			{
-				Persona previousValue = this._Persona.Entity;
-				if (((previousValue != value) 
-							|| (this._Persona.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Persona.Entity = null;
-						previousValue.Usuarios.Remove(this);
-					}
-					this._Persona.Entity = value;
-					if ((value != null))
-					{
-						value.Usuarios.Add(this);
-						this._idPersona = value.id;
-					}
-					else
-					{
-						this._idPersona = default(int);
-					}
-					this.SendPropertyChanged("Persona");
 				}
 			}
 		}

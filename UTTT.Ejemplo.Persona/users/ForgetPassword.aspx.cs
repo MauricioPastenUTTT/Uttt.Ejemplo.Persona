@@ -37,11 +37,39 @@ namespace UTTT.Ejemplo.Persona.users
         {
             try
             {
-                Validations();
+                var password = this.password.Text.Trim();
+                var passwordConfirm = this.passwordConfirm.Text.Trim();
+
+                message = false;
+
+                if (password.Length > 16)
+                {
+                    message = true;
+                    messageText = "The password must not contain more than 16 characters";
+                    return;
+                }
+                if (password.Equals(String.Empty))
+                {
+                    message = true;
+                    messageText = "The password is empty";
+                    return;
+                }
+                if (passwordConfirm.Equals(String.Empty))
+                {
+                    message = true;
+                    messageText = "The password confirm is empty";
+                    return;
+                }
+                if (!password.Equals(passwordConfirm))
+                {
+                    message = true;
+                    messageText = "The password do not match";
+                    return;
+                }
                 var UserName = username.Text.Trim();
                 DataContext DcGeneral = new DcGeneralDataContext();
                 User user = DcGeneral.GetTable<User>().First(u => u.username == UserName);
-                user.password = MCrypt.Encrypt(this.password.Text.Trim());
+                user.password = MCrypt.Encrypt(password);
                 DcGeneral.SubmitChanges();
                 this.Response.Redirect("~/users/Signin.aspx", false);
 
@@ -49,39 +77,6 @@ namespace UTTT.Ejemplo.Persona.users
             catch (Exception ex)
             {
                 this.Response.Redirect("~/PantallaError.aspx");
-            }
-        }
-
-        protected void Validations()
-        {
-            var password = this.password.Text.Trim();
-            var passwordConfirm = this.passwordConfirm.Text.Trim();
-
-            message = false;
-
-            if (password.Length > 16)
-            {
-                message = true;
-                messageText = "The password must not contain more than 16 characters";
-                return;
-            }
-            if (password.Equals(String.Empty))
-            {
-                message = true;
-                messageText = "The password is empty";
-                return;
-            }
-            if (passwordConfirm.Equals(String.Empty))
-            {
-                message = true;
-                messageText = "The password confirm is empty";
-                return;
-            }
-            if (!password.Equals(passwordConfirm))
-            {
-                message = true;
-                messageText = "The password do not match";
-                return;
             }
         }
     }

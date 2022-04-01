@@ -80,26 +80,42 @@
     <Content Include="DireccionExtraManager.aspx" />
     <Content Include="DireccionManager.aspx" />
     <Content Include="Home.aspx" />
-    <Content Include="Images\bootstrap.png" />
     <Content Include="Images\calendar.png" />
     <Content Include="Images\delrecord_16x16.png" />
     <Content Include="Images\editrecord_16x16.png" />
+    <Content Include="Images\patient.png" />
     <Content Include="Images\Pixir-1-1-300x181.png" />
     <Content Include="Images\printrecord_16x16.png" />
+    <Content Include="Images\product.png" />
+    <Content Include="Images\role.png" />
     <Content Include="Images\user.png" />
+    <Content Include="Images\users.png" />
     <Content Include="javaScripFile.js" />
     <Content Include="javaScripPage.aspx" />
+    <Content Include="Menu.aspx" />
     <Content Include="PantallaError.aspx" />
+    <Content Include="patients\AddPatient.aspx" />
+    <Content Include="patients\Patients.aspx" />
+    <Content Include="patients\UpdatePatient.aspx" />
     <Content Include="PersonaManager.aspx" />
     <Content Include="PersonaPrincipal.aspx" />
+    <Content Include="products\AddProduct.aspx" />
+    <Content Include="products\Products.aspx" />
+    <Content Include="products\UpdateProduct.aspx" />
+    <Content Include="roles\AddRole.aspx" />
+    <Content Include="roles\Roles.aspx" />
+    <Content Include="roles\UpdateRole.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.4.1.js" />
     <Content Include="Scripts\jquery-1.4.1.min.js" />
+    <Content Include="users\AddUser.aspx" />
     <Content Include="users\ForgetPassword.aspx" />
     <Content Include="users\Signin.aspx" />
     <Content Include="users\Signup.aspx" />
+    <Content Include="users\UpdateUser.aspx" />
+    <Content Include="users\Users.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -154,6 +170,13 @@
       <DependentUpon>javaScripPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="MCrypt.cs" />
+    <Compile Include="Menu.aspx.cs">
+      <DependentUpon>Menu.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Menu.aspx.designer.cs">
+      <DependentUpon>Menu.aspx</DependentUpon>
+    </Compile>
     <Compile Include="paginaMaster.Master.cs">
       <DependentUpon>paginaMaster.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -167,6 +190,27 @@
     </Compile>
     <Compile Include="PantallaError.aspx.designer.cs">
       <DependentUpon>PantallaError.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="patients\AddPatient.aspx.cs">
+      <DependentUpon>AddPatient.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="patients\AddPatient.aspx.designer.cs">
+      <DependentUpon>AddPatient.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="patients\Patients.aspx.cs">
+      <DependentUpon>Patients.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="patients\Patients.aspx.designer.cs">
+      <DependentUpon>Patients.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="patients\UpdatePatient.aspx.cs">
+      <DependentUpon>UpdatePatient.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="patients\UpdatePatient.aspx.designer.cs">
+      <DependentUpon>UpdatePatient.aspx</DependentUpon>
     </Compile>
     <Compile Include="PersonaManager.aspx.cs">
       <DependentUpon>PersonaManager.aspx</DependentUpon>
@@ -182,7 +226,56 @@
     <Compile Include="PersonaPrincipal.aspx.designer.cs">
       <DependentUpon>PersonaPrincipal.aspx</DependentUpon>
     </Compile>
+    <Compile Include="products\AddProduct.aspx.cs">
+      <DependentUpon>AddProduct.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="products\AddProduct.aspx.designer.cs">
+      <DependentUpon>AddProduct.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="products\Products.aspx.cs">
+      <DependentUpon>Products.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="products\Products.aspx.designer.cs">
+      <DependentUpon>Products.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="products\UpdateProduct.aspx.cs">
+      <DependentUpon>UpdateProduct.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="products\UpdateProduct.aspx.designer.cs">
+      <DependentUpon>UpdateProduct.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="roles\AddRole.aspx.cs">
+      <DependentUpon>AddRole.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="roles\AddRole.aspx.designer.cs">
+      <DependentUpon>AddRole.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="roles\Roles.aspx.cs">
+      <DependentUpon>Roles.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="roles\Roles.aspx.designer.cs">
+      <DependentUpon>Roles.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="roles\UpdateRole.aspx.cs">
+      <DependentUpon>UpdateRole.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="roles\UpdateRole.aspx.designer.cs">
+      <DependentUpon>UpdateRole.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="users\AddUser.aspx.cs">
+      <DependentUpon>AddUser.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="users\AddUser.aspx.designer.cs">
+      <DependentUpon>AddUser.aspx</DependentUpon>
+    </Compile>
     <Compile Include="users\ForgetPassword.aspx.cs">
       <DependentUpon>ForgetPassword.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -203,6 +296,20 @@
     </Compile>
     <Compile Include="users\Signup.aspx.designer.cs">
       <DependentUpon>Signup.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="users\UpdateUser.aspx.cs">
+      <DependentUpon>UpdateUser.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="users\UpdateUser.aspx.designer.cs">
+      <DependentUpon>UpdateUser.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="users\Users.aspx.cs">
+      <DependentUpon>Users.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="users\Users.aspx.designer.cs">
+      <DependentUpon>Users.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
