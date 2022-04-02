@@ -35,7 +35,7 @@
                     <hr />
                     <div class="form-group mt-2">
                         <asp:Button ID="btnCancelar" Text="Cancel" CssClass="btn btn-danger" OnClick="btnCancelar_Click" runat="server" />
-                        <asp:Button ID="btnUpdate" Text="Signup" CssClass="btn btn-info" OnClick="btnUpdate_Click" runat="server" />
+                        <asp:Button ID="btnAdd" Text="Add" CssClass="btn btn-primary" OnClick="btnAdd_Click" runat="server" />
                     </div>
                 </form>
             </div>

@@ -48,5 +48,29 @@ namespace UTTT.Ejemplo.Persona.roles
             {
             }
         }
+
+        protected void btnBack_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.Response.Redirect("~/Menu.aspx", false);
+            }
+            catch (Exception _e)
+            {
+                this.Response.Redirect("~/PantallaError.aspx");
+            }
+        }
+
+        protected void btnAddRole_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.Response.Redirect("~/roles/AddRole.aspx", false);
+            }
+            catch (Exception _e)
+            {
+                this.Response.Redirect("~/PantallaError.aspx");
+            }
+        }
     }
 }

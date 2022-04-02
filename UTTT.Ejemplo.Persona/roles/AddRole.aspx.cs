@@ -25,7 +25,19 @@ namespace UTTT.Ejemplo.Persona.roles
             }
         }
 
-        protected void btnUpdate_Click(object sender, EventArgs e)
+        protected void btnCancelar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.Response.Redirect("~/roles/Roles.aspx", false);
+            }
+            catch (Exception _e)
+            {
+                this.Response.Redirect("~/PantallaError.aspx");
+            }
+        }
+
+        protected void btnAdd_Click(object sender, EventArgs e)
         {
             try
             {
@@ -65,18 +77,6 @@ namespace UTTT.Ejemplo.Persona.roles
 
                 DcGeneral.GetTable<Role>().InsertOnSubmit(role);
                 DcGeneral.SubmitChanges();
-                this.Response.Redirect("~/roles/Roles.aspx", false);
-            }
-            catch (Exception _e)
-            {
-                this.Response.Redirect("~/PantallaError.aspx");
-            }
-        }
-
-        protected void btnCancelar_Click(object sender, EventArgs e)
-        {
-            try
-            {
                 this.Response.Redirect("~/roles/Roles.aspx", false);
             }
             catch (Exception _e)

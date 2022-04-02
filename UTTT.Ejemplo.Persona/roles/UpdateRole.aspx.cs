@@ -12,7 +12,6 @@ namespace UTTT.Ejemplo.Persona.roles
 {
     public partial class UpdateRole : System.Web.UI.Page
     {
-        private SessionManager session = new SessionManager();
         public bool message { get; set; }
         public string messageText { get; set; }
         protected void Page_Load(object sender, EventArgs e)

@@ -20,5 +20,17 @@ namespace UTTT.Ejemplo.Persona.users
                 this.Response.Redirect("~/Menu.aspx", false);
             }
         }
+
+        protected void btnBack_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.Response.Redirect("~/Menu.aspx", false);
+            }
+            catch (Exception _e)
+            {
+                this.Response.Redirect("~/PantallaError.aspx");
+            }
+        }
     }
 }
