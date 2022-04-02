@@ -26,11 +26,11 @@
                 <form id="formSignup" runat="server">
                     <div class="form-group">
                         <label>Role name:</label>
-                        <asp:TextBox ID="role" runat="server" CssClass="form-control"></asp:TextBox>
+                        <asp:TextBox ID="role" runat="server" CssClass="form-control" onkeypress="return isAlphabetKey(event, 'Role name')"></asp:TextBox>
                     </div>
                     <div class="form-group">
                         <label>Description</label>
-                        <asp:TextBox ID="description" runat="server" CssClass="form-control"></asp:TextBox>
+                        <asp:TextBox ID="description" runat="server" CssClass="form-control" onkeypress="return isAlphabetKey(event, 'Description')"></asp:TextBox>
                     </div>
                     <hr />
                     <div class="form-group mt-2">
@@ -42,5 +42,6 @@
         </div>
     </div>
     <script src="../Scripts/bootstrap.bundle.js"></script>
+    <script src="../Scripts/Validations.js"></script>
 </body>
 </html>

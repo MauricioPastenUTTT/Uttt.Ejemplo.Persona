@@ -69,13 +69,13 @@ namespace UTTT.Ejemplo.Persona.patients
                 if (phoneNumber.Length > 10)
                 {
                     message = true;
-                    messageText = "The phoneNumber must not contain more than 10 characters";
+                    messageText = "The phone number must not contain more than 10 characters";
                     return;
                 }
                 if (phoneNumber.Equals(String.Empty))
                 {
                     message = true;
-                    messageText = "The phoneNumber is empty";
+                    messageText = "The phone number is empty";
                     return;
                 }
                 if (tratamient.Length > 50)
@@ -106,7 +106,7 @@ namespace UTTT.Ejemplo.Persona.patients
             }
             catch (Exception _e)
             {
-
+                this.Response.Redirect("~/PantallaError.aspx");
             }
         }
     }

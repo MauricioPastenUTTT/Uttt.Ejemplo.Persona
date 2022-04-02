@@ -26,19 +26,19 @@
                 <form id="formSignup" runat="server">
                     <div class="form-group">
                         <label>Product name:</label>
-                        <asp:TextBox ID="name" runat="server" CssClass="form-control"></asp:TextBox>
+                        <asp:TextBox ID="name" runat="server" CssClass="form-control" onkeypress="return isAlphabetKey(event, 'Product name')"></asp:TextBox>
                     </div>
                     <div class="form-group">
                         <label>Description</label>
-                        <asp:TextBox ID="description" runat="server" CssClass="form-control"></asp:TextBox>
+                        <asp:TextBox ID="description" runat="server" CssClass="form-control" onkeypress="return isAlphabetKey(event, 'Description')"></asp:TextBox>
                     </div>
                     <div class="form-group">
                         <label>Price</label>
-                        <asp:TextBox ID="price" runat="server" CssClass="form-control"></asp:TextBox>
+                        <asp:TextBox ID="price" runat="server" CssClass="form-control" onkeydown="return (!(event.keyCode>=65 && event.keyCode<=90 ) && event.keyCode!=32);"></asp:TextBox>
                     </div>
                     <div class="form-group">
                         <label>Stock</label>
-                        <asp:TextBox ID="inStock" TextMode="Number" runat="server" CssClass="form-control"></asp:TextBox>
+                        <asp:TextBox ID="inStock" TextMode="Number" runat="server" CssClass="form-control" onkeydown="return (!(event.keyCode>=65 && event.keyCode<=90 ) && event.keyCode!=32);"></asp:TextBox>
                     </div>
                     <hr />
                     <div class="form-group mt-2">
@@ -50,5 +50,6 @@
         </div>
     </div>
     <script src="../Scripts/bootstrap.bundle.js"></script>
+    <script src="../Scripts/Validations.js"></script>
 </body>
 </html>

@@ -49,7 +49,7 @@ namespace UTTT.Ejemplo.Persona.views
             }
             catch (Exception ex)
             {
-
+                this.Response.Redirect("~/PantallaError.aspx");
             }
         }
 

@@ -28,7 +28,7 @@ namespace UTTT.Ejemplo.Persona.roles
             }
             catch (Exception _e)
             {
-                throw _e;
+                this.Response.Redirect("~/PantallaError.aspx");
             }
         }
 

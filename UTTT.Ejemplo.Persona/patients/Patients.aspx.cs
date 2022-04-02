@@ -53,7 +53,7 @@ namespace UTTT.Ejemplo.Persona.patients
             }
             catch (Exception _e)
             {
-                throw _e;
+                this.Response.Redirect("~/PantallaError.aspx");
             }
         }
 
@@ -69,7 +69,7 @@ namespace UTTT.Ejemplo.Persona.patients
             }
             catch (Exception _e)
             {
-                throw _e;
+                this.Response.Redirect("~/PantallaError.aspx");
             }
         }
 
@@ -90,6 +90,7 @@ namespace UTTT.Ejemplo.Persona.patients
             }
             catch (Exception _e)
             {
+                this.Response.Redirect("~/PantallaError.aspx");
             }
         }
     }

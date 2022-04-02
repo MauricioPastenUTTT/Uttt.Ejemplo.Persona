@@ -13,6 +13,7 @@ namespace UTTT.Ejemplo.Persona.users
     {
         public bool message { get; set; }
         public string messageText { get; set; }
+        public bool userExists { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["username"] != null || Session["password"] != null)
@@ -75,6 +76,36 @@ namespace UTTT.Ejemplo.Persona.users
 
             }
             catch (Exception ex)
+            {
+                this.Response.Redirect("~/PantallaError.aspx");
+            }
+        }
+
+        protected void btnSearchUser_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var UserName = username.Text.Trim();
+                if (UserName.Equals(String.Empty))
+                {
+                    message = true;
+                    messageText = "The user is empty";
+                    return;
+                }
+                DataContext DcGeneral = new DcGeneralDataContext();
+                User user = DcGeneral.GetTable<User>().FirstOrDefault(u => u.username == UserName);
+                if (user != null)
+                {
+                    userExists = true;
+                    this.username.Enabled = false;
+                } else
+                {
+                    message = true;
+                    messageText = "The user not exists";
+                    return;
+                }
+            }
+            catch (Exception _e)
             {
                 this.Response.Redirect("~/PantallaError.aspx");
             }

@@ -60,6 +60,15 @@ namespace UTTT.Ejemplo.Persona.users
         protected global::System.Web.UI.WebControls.Button btnCancelar;
 
         /// <summary>
+        /// btnSearchUser control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSearchUser;
+
+        /// <summary>
         /// btnUpdatePassword control.
         /// </summary>
         /// <remarks>

@@ -26,8 +26,10 @@
                 <form id="formSignup" runat="server">
                     <div class="form-group">
                         <label>Username</label>
-                        <asp:TextBox ID="username" runat="server" CssClass="form-control"></asp:TextBox>
+                        <asp:TextBox ID="username" runat="server" CssClass="form-control" onkeypress="return isAlphabetKey(event, 'username')"></asp:TextBox>
                     </div>
+                    <%if (userExists)
+                        { %>
                     <div class="form-group">
                         <label>New Password</label>
                         <asp:TextBox TextMode="Password" ID="password" runat="server" CssClass="form-control"></asp:TextBox>
@@ -37,14 +39,24 @@
                         <asp:TextBox TextMode="Password" ID="passwordConfirm" runat="server" CssClass="form-control"></asp:TextBox>
                     </div>
                     <hr />
+                    <% } %>
                     <div class="form-group mt-2">
                         <asp:Button ID="btnCancelar" Text="Cancel" CssClass="btn btn-danger" OnClick="btnCancelar_Click" runat="server" />
+                        <%if (!userExists)
+                        { %>
+                        <asp:Button ID="btnSearchUser" Text="Seach User" CssClass="btn btn-success" OnClick="btnSearchUser_Click" runat="server" />
+                         <% } %>
+                        <%if (userExists)
+                        { %>
                         <asp:Button ID="btnUpdatePassword" Text="Update password" CssClass="btn btn-info" OnClick="btnUpdatePassword_Click" runat="server" />
+                        <% } %>
                     </div>
+                    
                 </form>
             </div>
         </div>
     </div>
     <script src="../Scripts/bootstrap.bundle.js"></script>
+    <script src="../Scripts/Validations.js"></script>
 </body>
 </html>

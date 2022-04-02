@@ -29,7 +29,7 @@
                     </div>
                     <div class="form-group">
                         <label>Username</label>
-                        <asp:TextBox ID="username" runat="server" CssClass="form-control"></asp:TextBox>
+                        <asp:TextBox ID="username" runat="server" CssClass="form-control" onkeypress="return isAlphabetKey(event, 'username')"></asp:TextBox>
                     </div>
                     <div class="form-group">
                         <label>Password</label>
@@ -46,5 +46,6 @@
         </div>
     </div>
     <script src="../Scripts/bootstrap.bundle.js"></script>
+    <script src="../Scripts/Validations.js"></script>
 </body>
 </html>

@@ -110,6 +110,7 @@
     <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.4.1.js" />
     <Content Include="Scripts\jquery-1.4.1.min.js" />
+    <Content Include="Scripts\Validations.js" />
     <Content Include="users\AddUser.aspx" />
     <Content Include="users\ForgetPassword.aspx" />
     <Content Include="users\Signin.aspx" />

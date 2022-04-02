@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data.Linq;
+using System.Linq;
 using UTTT.Ejemplo.Linq.Data.Entity;
 
 namespace UTTT.Ejemplo.Persona.users
@@ -101,6 +102,15 @@ namespace UTTT.Ejemplo.Persona.users
                     return;
                 }
                 DataContext DcGeneral = new DcGeneralDataContext();
+
+                User userNameExist = DcGeneral.GetTable<User>().FirstOrDefault(u => u.username == username);
+                if (userNameExist != null)
+                {
+                    message = true;
+                    messageText = "The user alrady in use";
+                    return;
+                }
+
                 User user = new User
                 {
                     name = name,

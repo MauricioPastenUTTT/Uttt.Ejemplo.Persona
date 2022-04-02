@@ -75,7 +75,7 @@ namespace UTTT.Ejemplo.Persona.products
                 if (price.Length > 5)
                 {
                     message = true;
-                    messageText = "The description must not contain more than 5 characters";
+                    messageText = "The price must not contain more than 5 characters";
                     return;
                 }
                 if (price.Equals(String.Empty))
@@ -116,7 +116,7 @@ namespace UTTT.Ejemplo.Persona.products
             }
             catch (Exception _e)
             {
-
+                this.Response.Redirect("~/PantallaError.aspx");
             }
         }
 
