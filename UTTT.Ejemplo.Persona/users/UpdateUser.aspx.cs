@@ -38,8 +38,6 @@ namespace UTTT.Ejemplo.Persona.users
                 this.name.Text = user.name;
                 this.lastname.Text = user.lastname;
                 this.username.Text = user.username;
-                this.password.Text = user.password;
-                this.passwordConfirm.Text = user.password;
             }
         }
 
@@ -50,8 +48,6 @@ namespace UTTT.Ejemplo.Persona.users
                 var name = this.name.Text.Trim();
                 var lastname = this.lastname.Text.Trim();
                 var username = this.username.Text.Trim();
-                var password = this.password.Text.Trim();
-                var passwordConfirm = this.passwordConfirm.Text.Trim();
                 var active = Request.Form["active"];
                 bool activeValue = false;
 
@@ -92,31 +88,7 @@ namespace UTTT.Ejemplo.Persona.users
                     message = true;
                     messageText = "The lastname is empty";
                     return;
-                }
-                if (password.Length > 16)
-                {
-                    message = true;
-                    messageText = "The password must not contain more than 16 characters";
-                    return;
-                }
-                if (password.Equals(String.Empty))
-                {
-                    message = true;
-                    messageText = "The password is empty";
-                    return;
-                }
-                if (passwordConfirm.Equals(String.Empty))
-                {
-                    message = true;
-                    messageText = "The password confirm is empty";
-                    return;
-                }
-                if (!password.Equals(passwordConfirm))
-                {
-                    message = true;
-                    messageText = "The password do not match";
-                    return;
-                }
+                }               
 
                 if (active == "Enabled")
                 {
@@ -141,7 +113,6 @@ namespace UTTT.Ejemplo.Persona.users
                 user.name = name;
                 user.lastname = lastname;
                 user.username = username;
-                user.password = MCrypt.Encrypt(password);
                 //user.role = ;
                 user.active = activeValue;
                 DcGeneral.SubmitChanges();

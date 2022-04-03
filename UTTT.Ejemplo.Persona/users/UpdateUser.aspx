@@ -37,14 +37,6 @@
                         <asp:TextBox ID="lastname" runat="server" CssClass="form-control"></asp:TextBox>
                     </div>
                     <div class="form-group">
-                        <label>Password</label>
-                        <asp:TextBox TextMode="Password" ID="password" runat="server" CssClass="form-control"></asp:TextBox>
-                    </div>
-                    <div class="form-group">
-                        <label>Confirm Password</label>
-                        <asp:TextBox TextMode="Password" ID="passwordConfirm" runat="server" CssClass="form-control"></asp:TextBox>
-                    </div>
-                    <div class="form-group">
                         <label>Active</label>
                         <select class="form-select" id="active" name="active">
                             <option>Enabled</option>

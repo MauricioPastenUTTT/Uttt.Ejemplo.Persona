@@ -15,7 +15,7 @@
                 AllowPaging="True" Width="1067px" CellPadding="3" GridLines="Horizontal" BorderColor="#E7E7FF" BorderStyle="None" BorderWidth="1px" ViewStateMode="Disabled" BackColor="White">
                 <AlternatingRowStyle BackColor="#F7F7F7" />
                 <Columns>
-                    <asp:BoundField DataField="id" HeaderText="id" ReadOnly="True" SortExpression="id" />
+                    <asp:BoundField DataField="id" HeaderText="id" ReadOnly="True" SortExpression="id" Visible="false"/>
                     <asp:BoundField DataField="name" HeaderText="name" ReadOnly="True" SortExpression="name" />
                     <asp:BoundField DataField="description" HeaderText="description" ReadOnly="True" SortExpression="description" />
                     <asp:TemplateField HeaderText="Update">

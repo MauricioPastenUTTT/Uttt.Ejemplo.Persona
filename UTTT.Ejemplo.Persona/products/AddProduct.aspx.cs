@@ -95,7 +95,7 @@ namespace UTTT.Ejemplo.Persona.products
                 {
                     name = name,
                     description = description,
-                    price = float.Parse(price),
+                    price = double.Parse(price),
                     inStock = int.Parse(inStock),
                 };
 

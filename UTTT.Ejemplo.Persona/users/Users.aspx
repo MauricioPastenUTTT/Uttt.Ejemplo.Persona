@@ -10,17 +10,26 @@
 </head>
 <body>
     <form id="form1" runat="server" class="container mt-4">
-         <div class="table-responsive">
+        <div class="form-group">
+            <label>Username</label>
+            <asp:TextBox ID="username" runat="server" CssClass="form-control" onkeypress="return isAlphabetKey(event, 'lastname')"></asp:TextBox>
+            <label>Role</label>
+            <asp:DropDownList ID="ddlRole" runat="server" class="btn btn-info dropdown-toggle">
+            </asp:DropDownList>
+            <asp:Button ID="btnSearchUser" Text="Seach Patient" CssClass="btn btn-success" OnClick="btnSearchUser_Click" runat="server" />
+        </div>
+        <div class="table-responsive mt-4">
             <asp:GridView ID="GridViewUsers" DataKeyNames="id" runat="server" AutoGenerateColumns="False" DataSourceID="LinqDcUsers" OnRowCommand="GridViewUsers_RowCommand"
                 AllowPaging="True" Width="1067px" CellPadding="3" GridLines="Horizontal" BorderColor="#E7E7FF" BorderStyle="None" BorderWidth="1px" ViewStateMode="Disabled" BackColor="White">
                 <AlternatingRowStyle BackColor="#F7F7F7" />
                 <Columns>
-                    <asp:BoundField DataField="id" HeaderText="id" ReadOnly="True" SortExpression="id" />
-                    <asp:BoundField DataField="name" HeaderText="name" ReadOnly="True" SortExpression="name" />
-                    <asp:BoundField DataField="lastname" HeaderText="lastname" ReadOnly="True" SortExpression="lastname" />
-                    <asp:BoundField DataField="username" HeaderText="username" ReadOnly="True" SortExpression="username" />
-                    <asp:CheckBoxField DataField="active" HeaderText="active" ReadOnly="True" SortExpression="active" />
-                    <asp:BoundField DataField="role" HeaderText="role" ReadOnly="True" SortExpression="role" />
+                    <asp:BoundField DataField="id" HeaderText="id" ReadOnly="True" SortExpression="id" InsertVisible="False" />
+                    <asp:BoundField DataField="name" HeaderText="name" SortExpression="name" />
+                    <asp:BoundField DataField="lastname" HeaderText="lastname" SortExpression="lastname" />
+                    <asp:BoundField DataField="username" HeaderText="username" SortExpression="username" />
+                    <asp:BoundField DataField="password" HeaderText="password" SortExpression="password" />
+                    <asp:BoundField DataField="role" HeaderText="role" SortExpression="role" />
+                    <asp:CheckBoxField DataField="active" HeaderText="active" SortExpression="active" />
                     <asp:TemplateField HeaderText="Update">
                         <ItemTemplate>
                             <asp:ImageButton runat="server" ID="imgUpdate" CommandName="Update" CommandArgument='<%#Bind("id") %>' ImageUrl="~/Images/editrecord_16x16.png" />
@@ -47,9 +56,9 @@
                 <SortedDescendingCellStyle BackColor="#D8D8F0" />
                 <SortedDescendingHeaderStyle BackColor="#3E3277" />
             </asp:GridView>
-            <asp:LinqDataSource ID="LinqDcUsers" runat="server" ContextTypeName="UTTT.Ejemplo.Linq.Data.Entity.DcGeneralDataContext" EntityTypeName="" TableName="Users" Where="role != @role" EnableUpdate="true">
+            <asp:LinqDataSource ID="LinqDcUsers" runat="server" ContextTypeName="UTTT.Ejemplo.Linq.Data.Entity.DcGeneralDataContext" EntityTypeName="" TableName="Users" EnableUpdate="True" OnSelecting="LinqDcUsers_Selecting" Where="username != @username">
                 <WhereParameters>
-                    <asp:SessionParameter DefaultValue="1" Name="role" SessionField="role" Type="Int32" />
+                    <asp:SessionParameter Name="username" SessionField="username" Type="String" />
                 </WhereParameters>
             </asp:LinqDataSource>
         </div>

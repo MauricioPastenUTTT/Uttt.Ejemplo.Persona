@@ -10,12 +10,17 @@
 </head>
 <body>
     <form id="form1" runat="server" class="container mt-4">
-         <div class="table-responsive">
+        <div class="form-group">
+            <label>Product name</label>
+            <asp:TextBox ID="name" runat="server" CssClass="form-control" onkeypress="return isAlphabetKey(event, 'lastname')"></asp:TextBox>
+            <asp:Button ID="btnSearchProducr" Text="Seach Patient" CssClass="btn btn-success" OnClick="btnSearchProducr_Click" runat="server" />
+        </div>
+         <div class="table-responsive mt-4">
             <asp:GridView ID="GridViewProducts" DataKeyNames="id" runat="server" AutoGenerateColumns="False" DataSourceID="LinqDcUsers" OnRowCommand="GridViewProducts_RowCommand"
                 AllowPaging="True" Width="1067px" CellPadding="3" GridLines="Horizontal" BorderColor="#E7E7FF" BorderStyle="None" BorderWidth="1px" ViewStateMode="Disabled" BackColor="White">
                 <AlternatingRowStyle BackColor="#F7F7F7" />
                 <Columns>
-                    <asp:BoundField DataField="id" HeaderText="id" ReadOnly="True" SortExpression="id" />
+                    <asp:BoundField DataField="id" HeaderText="id" ReadOnly="True" SortExpression="id" Visible="false"/>
                     <asp:BoundField DataField="name" HeaderText="name" ReadOnly="True" SortExpression="name" />
                     <asp:BoundField DataField="description" HeaderText="description" ReadOnly="True" SortExpression="description" />
                     <asp:BoundField DataField="price" HeaderText="price" ReadOnly="True" SortExpression="price" />
@@ -46,7 +51,7 @@
                 <SortedDescendingCellStyle BackColor="#D8D8F0" />
                 <SortedDescendingHeaderStyle BackColor="#3E3277" />
             </asp:GridView>
-            <asp:LinqDataSource ID="LinqDcUsers" runat="server" ContextTypeName="UTTT.Ejemplo.Linq.Data.Entity.DcGeneralDataContext" EntityTypeName="" TableName="Products" EnableUpdate="true">
+            <asp:LinqDataSource ID="LinqDcUsers" runat="server" ContextTypeName="UTTT.Ejemplo.Linq.Data.Entity.DcGeneralDataContext" EntityTypeName="" TableName="Products" EnableUpdate="true" OnSelecting="LinqDcUsers_Selecting">
             </asp:LinqDataSource>
         </div>
         <div class="mt-2">

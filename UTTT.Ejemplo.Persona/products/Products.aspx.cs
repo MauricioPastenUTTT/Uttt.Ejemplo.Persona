@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Linq;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -87,6 +88,44 @@ namespace UTTT.Ejemplo.Persona.products
                         this.Eliminar(_idProduct);
                         break;
                 }
+            }
+            catch (Exception _e)
+            {
+                this.Response.Redirect("~/PantallaError.aspx");
+            }
+        }
+
+        protected void LinqDcUsers_Selecting(object sender, LinqDataSourceSelectEventArgs e)
+        {
+            try
+            {
+                DataContext dcSearch = new DcGeneralDataContext();
+                bool lastnameBool = false;
+                if (!this.name.Text.Equals(String.Empty))
+                {
+                    lastnameBool = true;
+                }
+
+                Expression<Func<Product, bool>>
+                    predicate = (p => (lastnameBool) ? (((lastnameBool) ?
+                        p.name.Contains(this.name.Text.Trim()) : false)) : true);
+
+                predicate.Compile();
+
+                List<Product> productList = dcSearch.GetTable<Product>().Where(predicate).ToList();
+                e.Result = productList;
+            }
+            catch (Exception _e)
+            {
+                this.Response.Redirect("~/PantallaError.aspx");
+            }
+        }
+
+        protected void btnSearchProducr_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.LinqDcUsers.RaiseViewChanged();
             }
             catch (Exception _e)
             {
